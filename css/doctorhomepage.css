@@ -461,19 +461,15 @@ input[type="text"]{
     font-weight: 600;
     font-size: 16px;
     text-align:center;
-    margin-left: -300px;
 }
 
-#choose-type-1,
-#choose-type-2,
-#choose-type-3,
-#choose-type-4 {
+#choose-type-1 a,
+#choose-type-2 a,
+#choose-type-3 a {
     padding-top: 15px;
     padding-bottom: 15px;
     display:inline-block;
-    float:none;
-    text-align:left;
-    margin-right:-4px;
+    color: white;
 }
 
 #choose-type-1 {
@@ -485,16 +481,14 @@ input[type="text"]{
     font-weight: 600;
     font-size: 16px;
     text-align:center;
+    height: 500px;
 }
 
 .colored {
     background-color: rgba(255,255,255,.4);
+    height: 100%;
 }
 
-#d3,
-#results {
-    display:inline-block;
-    float:none;
-    text-align:left;
-    margin-right:-4px;
+.cell-margin {
+    margin-right: 20px;
 }
