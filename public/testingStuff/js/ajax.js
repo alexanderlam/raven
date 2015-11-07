@@ -1,4 +1,4 @@
-var url = 'https://yhealth.herokuapp.com/';
+var url = 'https://yraven.herokuapp.com/';
 
 function serverLookup(authResponse) {
     jQuery.ajax({
