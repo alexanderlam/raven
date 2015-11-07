@@ -1,25 +1,26 @@
 {
-  "name": "yhack2015",
+  "name": "raven",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/l3ubbleman/YHack2015.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/l3ubbleman/YHack2015/issues"
-  },
-  "homepage": "https://github.com/l3ubbleman/YHack2015#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "fb": "^0.7.3",
     "fbgraph": "^1.1.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderlam/raven.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderlam/raven/issues"
+  },
+  "homepage": "https://github.com/alexanderlam/raven#readme"
 }
