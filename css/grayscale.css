@@ -509,3 +509,8 @@ input[type="text"]{
     padding:0px;
     display:none;
 }
+
+.dark{
+ background-color:#2F2933;   
+}
+
