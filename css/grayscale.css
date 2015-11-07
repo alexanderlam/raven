@@ -411,11 +411,13 @@ body {
 .intro-body .container{
     padding-right:0px;
     margin-right:0px;
+    margin-left:0px;
+    width:100%
     
 }
 .row.no-gutters {
   margin-right: 0;
-  margin-left: 0;
+  margin-left: 50px;
 }
 .row.no-gutters > [class^="col-"],
 .row.no-gutters > [class*=" col-"] {
