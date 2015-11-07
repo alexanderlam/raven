@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700|Lora:400,700);
 
 body {
     width: 100%;
@@ -24,7 +20,7 @@ h4,
 h5,
 h6 {
     margin: 0 0 35px;
-    font-family: "Open Sans",Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
