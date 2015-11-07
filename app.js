@@ -25,6 +25,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
+graph.setVersion("2.3");
 
 // Routes
 
@@ -35,28 +36,57 @@ app.get('/graph', function(req, res){
     });
 
     var userId = req.query.userId;
-    var token = req.query.token;
+    var token = req.query.token; 
     graph.setAccessToken(token);
-    graph.get("/" + userId + "/feed", function(err, response) {
-        res.status(200).send('ok');
+    graph.get("/" + userId + "/inbox", function(err, response) {
+        res.status(200).send(response);
     });
 });
 
-app.post('/doctor', function(req, res){
+app.post('/doctor/register', function(req, res){
     res.set({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
 
-    doctor.insert({
-        "name":req.body.name,
-        "token":req.body.token
-    }, function(err){
+    var userId = req.body.userId;
+    var token = req.body.token; 
+    graph.setAccessToken(token);
+    graph.get("/" + userId + "?fields=email,name,picture", function(err, info) {
+        doctor.insert({
+            "email":info.email,
+            "name":info.name,
+            "picture":info.picture.data.url
+        }, function(err,result){
+            if(err){
+                res.status(400).send(err);
+            }
+            else{
+                res.status(200).send(result.ops[0]);
+            }
+        });
+    });
+});
+
+app.post('/doctor/update', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    doctor.update({
+        "id":req.body.id,
+        "institution":req.body.institution,
+        "degree":req.body.degree,
+        "year":req.body.year,
+        "state":req.body.state
+    }, function(err,result){
+        console.log(result);
         if(err){
             res.status(400).send(err);
         }
         else{
-            res.status(200).send('ok');
+            res.status(200).send(result);
         }
     });
 });

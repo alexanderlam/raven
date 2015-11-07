@@ -1,65 +1,48 @@
 var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGOLAB_URI + '/doctors';
+var ObjectID = require('mongodb').ObjectID;
 
 //insert doctor
-var insertDoctor = function(doctor, cb){
+var insert = function(doctor, cb){
     var operation = function(db, callback) {
         db.collection('doctors').insert(doctor,
 
             function(err, result) {
                 console.log("Inserted a document into the doctors collection.\n");
-                callback(err);
+                callback(err,result);
             }
         );
     };
 
     MongoClient.connect(url, function(err, db) {
         console.log("Connected correctly to server.");
-        operation(db, function(err){
-            cb(err);
+        operation(db, function(err,result){
+            cb(err,result);
             db.close();
         })
     });
 };
 
-var findLocations = function(cb){
-    var operation = function(db, callback) {
-        var cursor = db.collection('locations').find();
-        var locationList = [];
-        cursor.each(function(err, doc) {
-            if (doc != null) {
-                console.dir(doc);
-                locationList.push(doc);
-            } else {
-                callback(locationList);
-            }
-        });
-    };
-
-    MongoClient.connect(url, function(err, db) {
-        console.log("Connected correctly to server.");
-        operation(db, function(locationList){
-            cb(locationList);
-            db.close();
-        })
-    });
-};
-
-var upvoteLocation = function(lookup, cb){
+var update = function(info, cb){
     var operation = function(db, foundItem, callback) {
-        db.collection('locations').updateOne(
-            { "name" : lookup },
+        db.collection('doctors').updateOne(
+            { 
+                "institution": info.institution,
+                "degree": info.degree,
+                "year": info.year,
+                "state": info.state
+            },
             {
-                $set: { "upvote": foundItem.upvote + 1 },
                 $currentDate: { "lastModified": true }
             }, function(err, results) {
-                callback();
+                console.log(results);
+                callback(err, results);
             });
     };
 
     var find = function(db, callback) {
         var foundItem = null;
-        var cursor = db.collection('locations').find( { "name": lookup } );
+        var cursor = db.collection('doctors').find( { "_id": ObjectID(info.id) } );
         cursor.each(function(err, doc) {
             if (doc != null) {
                 foundItem = doc;
@@ -69,39 +52,31 @@ var upvoteLocation = function(lookup, cb){
         });
     };
 
-    MongoClient.connect(url, function(err, db) {
-        console.log("Connected correctly to server.");
-        find(db, function(foundItem){
-            operation(db, foundItem, function(){
-                cb(foundItem);
-                db.close();
-            })
+    var modify = function(db, callback){
+        var value = db.collection('doctors').findAndModify({
+            query: { "_id": ObjectID(info.id) },
+            update: { 
+                "institution": info.institution,
+                "degree": info.degree,
+                "year": info.year,
+                "state": info.state
+            },
+            new:true 
         });
-    });
-};
 
-var find1 = function(lookup, cb){
-    var operation = function(db, callback) {
-        var foundItem = null;
-        var cursor = db.collection('locations').find( { "name": lookup } );
-        cursor.each(function(err, doc) {
-            if (doc != null) {
-                foundItem = doc;
-            } else {
-                callback(foundItem);
-            }
-        });
+        callback(value);
     };
 
     MongoClient.connect(url, function(err, db) {
         console.log("Connected correctly to server.");
-        operation(db, function(results){
-            cb(results);
+        modify(db, function(foundItem){
+            cb(foundItem);
             db.close();
-        })
+        });
     });
 };
 
 module.exports = {
-    insert: insertDoctor
+    insert: insert,
+    update: update
 };
