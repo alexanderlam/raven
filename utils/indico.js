@@ -3,15 +3,13 @@ indico.apiKey = process.env.INDICO_KEY;
 
 var keywords = function(posts, callback){
 	var list = [];
-
-	for (var post in posts){
-		if(post.message){
-			indico.keywords(post.message)
+	for (var i = 0; i < posts.length; i++){
+		if(posts[i].message){
+			indico.keywords(posts[i].message)
 			.then(function(res) {
-				console.log(res);
 				list.push(res);
 
-				if(list.length === posts.length){
+				if(i === posts.length){
 					callback(list);
 				}
 			}).catch(function(err) {

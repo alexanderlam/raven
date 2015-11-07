@@ -38,11 +38,7 @@ app.get('/graph', function(req, res){
     var token = req.query.token;
     graph.setAccessToken(token);
     graph.get("/" + userId + "/feed", function(err, response) {
-        console.log(response);
-        indico.keywords(response, function(list){
-            console.log(list);
-            res.status(200).send(list);
-        });
+        res.status(200).send('ok');
     });
 });
 
