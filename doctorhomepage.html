@@ -22,7 +22,9 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     
-    
+    <script src="d3.v3.min.js"></script>
+<script src="colorbrewer.js"></script>
+<link rel="stylesheet" type="text/css" href="colorbrewer.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,49 +74,47 @@
 
         <!-- Intro Header -->
         <header class="intro">
-        <!-- <div class="intro-body">
+
             <div class="container">
-                <div class="row no-gutters">
+                <div class="row center-choose-type text-center">
+                    <div class="col-sm-2" id = "choose-type-1"><a href="#">Posts</a></div>
+                    <div class="col-sm-2" id = "choose-type-2"><a href="#">Likes</a></div>
+                    <div class="col-sm-2" id = "choose-type-3"><a href="#"></a></div>
+                </div>
+                <div class="row text-center center-display-type">
+                    <div class="col-sm-7 colored cell-margin">
+                        <div id="chart"></div>
+                        <div id="legend"></div>
+                        <script src="js/bilevelpartition.js"></script>
+                    </div>
+                    <div class="col-sm-4 colored"></div>
                 </div>
             </div>
-        </div> -->
 
-        <div class="container">
-            <div class="row center-choose-type text-center">
-                <div class="col-sm-2" id = "choose-type-1"><a href="#">Posts</a></div>
-                <div class="col-sm-2" id = "choose-type-2"><a href="#">Likes</a></div>
-                <div class="col-sm-2" id = "choose-type-3"><a href="#"></a></div>
+            <div class ="col-md-12 no-gutters text-center bottom-bar">
+                <div class ="col-md-3"><a href="#" class="bottom-bar-text">Word Usage</a></div>
+                <div class ="col-md-3"><a href="#" class="bottom-bar-text">Feelings and Emotions</a></div>
+                <div class ="col-md-3"><a href="#" class="bottom-bar-text">Relationships</a></div>
+                <div class ="col-md-3"><a href="#" class="bottom-bar-text">Overall Analysis</a></div>
             </div>
-            <div class="row text-center center-display-type">
-                <div class="col-sm-7 colored cell-margin"></div>
-                <div class="col-sm-4 colored"></div>
-            </div>
-        </div>
-
-        <div class ="col-md-12 no-gutters text-center bottom-bar">
-            <div class ="col-md-3"><a href="#" class="bottom-bar-text">Word Usage</a></div>
-            <div class ="col-md-3"><a href="#" class="bottom-bar-text">Feelings and Emotions</a></div>
-            <div class ="col-md-3"><a href="#" class="bottom-bar-text">Relationships</a></div>
-            <div class ="col-md-3"><a href="#" class="bottom-bar-text">Overall Analysis</a></div>
-        </div>
-    </header>
+        </header>
 
 
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
+        <!-- Plugin JavaScript -->
+        <script src="js/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+        <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="js/grayscale.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>
