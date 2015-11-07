@@ -153,8 +153,7 @@ a:focus {
 }
 
 .intro .intro-body {
-    display: table-cell;
-    vertical-align: middle;
+    margin-top:150px;
 }
 
 .intro .intro-body .brand-heading {
@@ -407,4 +406,9 @@ body {
 
 #regHeader{
     text-align:center;   
+}
+
+.intro-body .container{
+    padding-right:0px;
+    
 }
