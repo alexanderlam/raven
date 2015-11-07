@@ -166,6 +166,7 @@ a:focus {
 
 .tablet-picture {
     text-align: right;
+    width:100%
 }
 
 @media(min-width:768px) {
@@ -437,4 +438,74 @@ input[type="text"]{
 
 .highlight{
     color:#BDF271;   
+}
+
+.section-hero {
+    text-align: center;
+    background: url(../img/Background_main.png) no-repeat bottom center scroll;
+    background-size: cover;
+
+}
+
+.hero-content{
+ padding-top:100px;   
+}
+
+#profile_area {
+	overflow:hidden;
+	margin:0 -20px 20px -20px;
+	padding:0 20px 20px 20px;
+	border-bottom:1px solid #e5e5e5;
+}
+
+.profile_pic {
+	float:left;
+	width:300px;
+	height:300px;
+	position:relative;
+}
+.profile_pic img {
+	max-width:300px;
+	max-height:300px;
+	-webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+}
+.profile_pic:hover > a img{
+	opacity:.8;
+}
+
+.profile_text {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 300px;
+    z-index: 100;
+    
+}
+
+.profile_text a{
+    color:#FFF;
+    
+}
+
+.profile_overlay {
+    background: url(../img/feature-overlay.png) repeat-x;
+    height: 161px;
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    z-index: 1;
+}
+
+#patientRow{
+    width:72.1%;   
+    text-align:center;
+    margin: 0 auto;
+}
+
+.patientCol{
+    padding:0px;   
 }
