@@ -26,6 +26,7 @@ $(document).ready(function() {
 		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
 		$('#d3-holder-1').addClass('hidden');
 		$('#d3-holder-2').addClass('hidden');
+		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-3').removeClass('hidden');
 	});
 
@@ -38,6 +39,7 @@ $(document).ready(function() {
 		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
 		$('#d3-holder-1').addClass('hidden');
 		$('#d3-holder-3').addClass('hidden');
+		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-2').removeClass('hidden');
 
 	});
@@ -51,6 +53,7 @@ $(document).ready(function() {
 		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
 		$('#d3-holder-2').addClass('hidden');
 		$('#d3-holder-3').addClass('hidden');
+		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-1').removeClass('hidden');
 	});
 
@@ -61,6 +64,10 @@ $(document).ready(function() {
 		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
 		$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
 		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
+		$('#d3-holder-2').addClass('hidden');
+		$('#d3-holder-3').addClass('hidden');
+		$('#d3-holder-1').addClass('hidden');
+		$('#d3-holder-4').removeClass('hidden');
 	});
 
 	var context = [
