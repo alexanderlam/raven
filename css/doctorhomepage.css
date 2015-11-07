@@ -492,3 +492,78 @@ input[type="text"]{
 .cell-margin {
     margin-right: 20px;
 }
+
+
+/*PRAGMA MARK----------------
+----------------------------
+0---------------------------
+----------------------------
+0---------------------------
+----------------------------
+0---------------------------
+----------------------------
+0---------------------------
+----------------------------
+0---------------------------
+----------------------------
+0---------------------------*/
+
+path {
+  stroke: #fff;
+  fill-rule: evenodd;
+}
+
+text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+path {
+  stroke: #fff;
+}
+.tooltip, .tooltip-pending-removal {
+  position: absolute;
+  background-color: rgba(255,255,255,1);
+  padding: 10px;
+  border: 1px solid #ddd;
+  z-index: 10000;
+  display: inline-block;
+  font-family: Arial;
+  font-size: 13px;
+  border-radius: 10px;
+
+  pointer-events: none;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.tooltip {
+
+  transition: opacity 500ms linear;
+  -webkit-transition: opacity 500ms linear;
+
+  transition-delay: 500ms;
+  -webkit-transition-delay: 500ms;
+
+  -moz-box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+  -webkit-box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+  box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+
+}
+
+#chartss{
+}
+
+#legend{
+position: absolute;
+top: 24%;
+}
+
+#chart {
+  left: 5.5%;
+  position: relative;
+}
+
+#chart path {
+  stroke: #fff;
