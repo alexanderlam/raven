@@ -28,10 +28,6 @@ app.use(bodyParser.urlencoded());
 
 // Routes
 
-app.get('/', function(req, res){
-  res.render("index", { title: "click link to connect" });
-});
-
 app.get('/graph', function(req, res){
     res.set({
         "Content-Type": "application/json",
