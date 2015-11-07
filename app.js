@@ -1,7 +1,8 @@
 var express = require("express");
 var app = express();
 var graph = require('fbgraph');
-var FB = require('fb');
+var doctor = require('./user/doctor');
+var patient = require('./user/patient');
 
 var bodyParser = require('body-parser')
 app.set('port', (process.env.PORT || 5000));
@@ -55,3 +56,40 @@ app.get('/graph', function(req, res){
     });
 });
 
+app.post('/doctor', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    doctor.insert({
+        "name":req.body.name,
+        "token":req.body.token
+    }, function(err){
+        if(err){
+            res.status(400).send(err);
+        }
+        else{
+            res.status(200).send('ok');
+        }
+    });
+});
+
+app.post('/patient', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    patient.insert({
+        "name":req.body.name,
+        "token":req.body.token
+    }, function(err){
+        if(err){
+            res.status(400).send(err);
+        }
+        else{
+            res.status(200).send('ok');
+        }
+    });
+});

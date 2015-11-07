@@ -2,20 +2,21 @@ var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGOLAB_URI + '/doctors';
 
 //insert doctor
-var insertDoctor = function(doctor){
+var insertDoctor = function(doctor, cb){
     var operation = function(db, callback) {
-        db.collection('doctors').insert(location,
+        db.collection('doctors').insert(doctor,
 
             function(err, result) {
                 console.log("Inserted a document into the doctors collection.\n");
-                callback(result);
+                callback(err);
             }
         );
     };
 
-    MongoClient.connect(url, function(err, db) 
+    MongoClient.connect(url, function(err, db) {
         console.log("Connected correctly to server.");
-        operation(db, function(){
+        operation(db, function(err){
+            cb(err);
             db.close();
         })
     });
