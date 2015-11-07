@@ -166,7 +166,6 @@ a:focus {
 
 .tablet-picture {
     text-align: right;
-    width:100%
 }
 
 @media(min-width:768px) {
@@ -507,5 +506,6 @@ input[type="text"]{
 }
 
 .patientCol{
-    padding:0px;   
+    padding:0px;
+    display:none;
 }
