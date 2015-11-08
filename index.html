@@ -58,7 +58,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">Log In</a>
+                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#loginModal" >Log In</a>
                     </li>
                 </ul>
             </div>
@@ -78,7 +78,7 @@
                         </center>
                         <br>
                         <center>
-                        <button class="btn sign-up-button">Sign Up Today</button>
+                        <button class="btn sign-up-button" data-toggle="modal" data-target="#registerModal">Sign Up Today</button>
                         </center>
                         <br>
                         <br>
@@ -117,7 +117,49 @@
             <p>Copyright &copy; Your Website 2014</p>
         </div>
     </footer>
+    
+    
+<!-- Register Modal-->
+<div id="registerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content dark" style="padding:20px; text-align:center;">
+        <div class="row">
+            <div class="col-md-6" style="padding-top:20px;">
+                <h1>Doctor?</h1>
+                <a href="doctorregistration.html"><button class="btn sign-up-button">Sign Up Today</button></a>
+            </div>
+            <div class="col-md-6" style="padding-top:20px;">
+                <h1>Patient?</h1>
+                <a href="mailto:?to=&body=Please%20sign%20up%20for%20Raven%20at%20ravenapp.io.,&subject=Diagnostic%20Tool%20Request" target="_blank"><button class="btn sign-up-button">Request Access</button></a>
+                </div>
+            </div>
+            <div class="row" style="padding-top:50px;">
+        <p >Already registered? <a href="#" data-toggle="modal" data-target="#loginModal" onmousedown="$('#registerModal').modal('hide');">Sign in here.</a></p>
+            </div>
+      </div>
+        
+    </div>
+    </div>
 
+<!-- Register Modal-->
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content dark" style="padding:20px; text-align:center;">
+        <div class="row">
+            <div class="col-md-12" style="padding-top:20px;">
+                <h1>Sign in to your account</h1>
+                <a href="#"><button class="btn sign-up-button">Sign in Now</button></a>
+            </div>
+            </div>
+            <div class="row" style="padding-top:50px;">
+        <p >Not registered? <a href="#" data-toggle="modal" data-target="#registerModal" onmousedown="$('#loginModal').modal('hide');">Register here.</a></p>
+            </div>
+      </div>
+        
+    </div>
+    </div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -127,8 +169,7 @@
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+  
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>

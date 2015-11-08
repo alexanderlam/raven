@@ -22,7 +22,7 @@ var QueryString = function () {
     return query_string;
 }();
 
-function submitDoctorForm(){
+function submitDoctorForm(docId){
     var institution = document.getElementById("institution-field").value;
      var degree = document.getElementById("degree-field").value;
      var grad = document.getElementById("grad-field").value;
@@ -36,8 +36,11 @@ function submitDoctorForm(){
     
 }
 
-function populatePatients(){
-    
+function populatePatients(docId){
+            var imageKey = "";
+        var nameKey = "";
+        var idKey = "";
+        
     //Call server to get JSON response of patient data
     
     //Turn JSON response into array
@@ -45,10 +48,7 @@ function populatePatients(){
     var count = 0;
     //foreach patient, get the picture, name and profile ID
     for (var value in patientArray){
-        var imageKey = "";
-        var nameKey = "";
-        var idKey = "";
-        
+
         //Set picture, name, profile link
         var entireElement = document.getElementByClassName("patientCol")[count];
         var profileImage = entireElement.getElementById("profile_image");
@@ -73,5 +73,15 @@ function populatePatients(){
         
     };
     
+    
+}
+
+function populatePatientDashboard(patientId){
+     var name = document.getElementById("pName").innerHTML;
+     var email = document.getElementById("pEmail").innerHTML;
+     var dob = document.getElementById("pDob").innerHTML;
+     var gender = document.getElementById("pGender").innerHTML;
+     var doctor = document.getElementById("pDoctor").innerHTML;
+
     
 }
