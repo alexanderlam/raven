@@ -1,11 +1,23 @@
+	var bipolar = 0;
+	var depression = 0;
+	var substanceAbuse = 0;
+	var insomnia = 0;
+	var anxiety = 0;
+	var insomnia = 0;
+	var eatingDisorder = 0;
+	var schizophrenia = 0;
+	var npd = 0;
+	var apd = 0;
+	var bpd = 0;
+	var ocd = 0;
+	var ptsd = 0;
+
+var reasons = [];
+
 $(document).ready(function() {
 
 
 	var load = 0;
-
-
-
-
 
 
 	var text = JSON.stringify([{  
@@ -68,7 +80,7 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
                         		var divClone = myDiv.cloneNode(true);
                         		document.getElementById("warning-sign").appendChild(divClone);
                         		var topic = [topics[Math.floor((Math.random() * 10))]];
-                        		divClone.innerHTML = "<h3 id = 'warning-sign-topic'>" + topic + ": " + indicoArray[i].indico[topic] + "</h3><p id = 'warning-sign-post'>" + indicoArray[i].message +"</p><h4 id = 'warning-sign-date'>" + indicoArray[i].created + "</h4>";
+                        		divClone.innerHTML = "<h3 id = 'warning-sign-topic'><b>" + topic + "</b>: Relevance rating of " + Math.floor(indicoArray[i].indico[topic] * 1000) + "</h3><p id = 'warning-sign-post'>'" + indicoArray[i].message +"'</p><h4 id = 'warning-sign-date'>- " + indicoArray[i].created + "</h4>";
                         	}
                         }
 
@@ -80,15 +92,68 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
                         var countDict = [["dieting",0, 0], ["drugs",0,0], ["beer",0, 0], ["personal",0,0], ["romance",0, 0], ["relationships",0,0], ["atheism",0,0], ["nostalgia",0,0], ["lgbt",0,0], ["wine",0,0]];
                         for (var i = 0; i <= indicoArray.length - 1; i++) {
                         	countDict[0][1] += indicoArray[i].indico.dieting;
+                        	if (indicoArray[i].indico.dieting > .1) {
+                        		eatingDisorder += 2;
+                        		bpd += 1;
+                        		anxiety += 1;
+                        		depression += 1;
+                        		reasons.push("The patient was found to display possible signs of an Eating Disorder, which is often in contention with Borderline Personality Disorder, Anxiety, and Depression due to the following post: " + indicoArray[i].message);
+                        	}
                         	countDict[1][1] += indicoArray[i].indico.drugs;
+                        	if (indicoArray[i].indico.drugs > .1 || indicoArray[i].indico.beer > .1 || indicoArray[i].indico.wine > .1) {
+                        		substanceAbuse += 2;
+                        		bipolar += 1;
+                        		ptsd += 1;
+                        		anxiety += 1;
+                        		schizophrenia += 1;
+                        		apd += 1;
+                        		bpd += 1;
+                        		reasons.push("The patient was found to display possible signs of an Substance Abuse, which is often in contention with Anxiety, Antisocial Personality Disorder, Borderline Personality Disorder, Bipolar Disorder, Post Traumatic Stress Disorder, Schizophrenia, and Depression due to the following post: " + indicoArray[i].message);
+                        	}
                         	countDict[2][1] += indicoArray[i].indico.beer;
                         	countDict[3][1] += indicoArray[i].indico.personal;
+                        	if (indicoArray[i].indico.personal > .1) {
+                        		depression += 1;
+                        		anxiety += 1;
+                        		insomnia += 1;
+                        		npd += 1;
+                        		bpd += 1;
+                        		reasons.push("The patient was found to display possible signs of self deprecation or self conceit, which is often in contention with Anxiety, Borderline Personality Disorder, Bipolar Disorder, Post Traumatic Stress Disorder, Narcissistic Personality Disorder and Depression due to the following post: " + indicoArray[i].message);
+
+                        	}
                         	countDict[4][1] += indicoArray[i].indico.romance;
+                        	if (indicoArray[i].indico.romance > .1 || indicoArray[i].indico.relationships > .1) {
+                        		bpd += 1;
+                        		depression += 1;
+                        		bipolar += 1;
+                        		npd += 1;
+                        		reasons.push("The patient wasfound to display possible signs of inter-relationship problems, which is often in contention with Borderline Personality Disorder, Bipolar Disorder, Depression, and Narcissistic Personality Disorder due to the following post: " + indicoArray[i].message);
+
+                        	}
                         	countDict[5][1] += indicoArray[i].indico.relationships;
                         	countDict[6][1] += indicoArray[i].indico.atheism;
+                        	if (indicoArray[i].indico.atheism > .1) {
+                        		apd += 1;
+                        		ptsd += 1;
+                        		reasons.push("The patient was found to display possible signs of an atheist lifestyle, which is often associated with Antisocial Personality Disorder or Post Traumatic Stress Disorder due to the following post: " + indicoArray[i].message);
+
+                        	}
                         	countDict[7][1] += indicoArray[i].indico.nostalgia;
+                        	if (indicoArray[i].indico.nostalgia > .1) {
+                        		insomnia += 1;
+                        		ptsd += 1;
+                        		bpd += 1;
+                        		depression += 1;
+                        		reasons.push("The patient was found to display possible signs of nostalgia, which could signal problems with Insomnia, Post Traumatic Stress Disorder, Borderline Personality Disorder, and Depression due to the following post: " + indicoArray[i].message);
+                        	}
                         	countDict[8][1] += indicoArray[i].indico.lgbt;
+                        	if (indicoArray[i].indico.lgbt > .1) {
+                        		depression += 1;
+                        		reasons.push("The patient was found discussing a LGBT lifestyle (individuals who identify as LGTB have higher rates of depression) in the following post: " + indicoArray[i].message);
+                        	}
                         	countDict[9][1] += indicoArray[i].indico.wine;
+
+                        	
                         }
 
                         var maximum = 0;
@@ -105,8 +170,7 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
 
                         	if (percentMax > 95) {
                         		worldCloudList.push([countDict[i][0], fontSizes[0]]);
-                        		worldCloudList.push([countDict[i][0], fontSizes[2]]);
-                        		worldCloudList.push([countDict[i][0], fontSizes[2]]);
+                    
                         	} else if (percentMax > 85) {
                         		worldCloudList.push([countDict[i][0], fontSizes[1]]);
                         		worldCloudList.push([countDict[i][0], fontSizes[2]]);
@@ -114,8 +178,8 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
                         		worldCloudList.push([countDict[i][0], fontSizes[3]]);
                         		worldCloudList.push([countDict[i][0], fontSizes[3]]);
                         	} else if (percentMax > 70) {
+                        		worldCloudList.push([countDict[i][0], fontSizes[1]]);
                         		worldCloudList.push([countDict[i][0], fontSizes[2]]);
-                        		worldCloudList.push([countDict[i][0], fontSizes[3]]);
                         		worldCloudList.push([countDict[i][0], fontSizes[3]]);
                         		worldCloudList.push([countDict[i][0], fontSizes[4]]);
                         		worldCloudList.push([countDict[i][0], fontSizes[4]]);
@@ -297,11 +361,38 @@ $("#choose-type-2").click(function() {
         label: "Positive"
     	}
 	]
-
+		document.getElementById("sentiment-variance-cell-score").innerHTML = "This patient has <font color ='#46BFBD'>" +positive+ " positive posts</font> and <font color='F7464A'>" +negative+ " negative posts</font>.<br><br>Overall, this amounts to <b>" +Math.floor(positive/(positive+negative) * 100)+"%</b> positive posts and <b>" + Math.floor(negative/(positive+negative) * 100)+ "%</b> negative posts.";
 		var pie_chart = document.getElementById("canvas_pie").getContext("2d");
 		new Chart(pie_chart).Pie(pieData);
-
-		document.getElementById("sentiment-variance-cell-score").innerHTML = "This patient has " +positive+ " positive posts and " +negative+ " negative posts.<br>Overall, this amounts to " +Math.floor(positive/(positive+negative) * 100)+"% positive posts and " + Math.floor(negative/(positive+negative) * 100)+ "% negative posts.";
+		if (Math.floor(negative/(positive+negative) * 100) > 25) {
+			depression += 1;
+			bpd += 1;
+            reasons.push("The patient was determined to be speaking in a negative way in the majority of their posts. Studies have shown engaging in negative conversations over social media can put patients in a bad mood, or continue any negative thoughts carried over from the physical world.");
+		}
+		if (Math.floor(positive/(positive+negative) * 100) > 40 && Math.floor(positive/(positive+negative) * 100) < 60) {
+			depression += 1;
+			bipolar += 2;
+			anxiety += 1;
+			bpd += 1;
+            reasons.push("The patient was determined to be speaking in an inconsistent manner quite frequently, as denoted by the fact that roughly half of their positives are positive and negative. Such inconsistenties in mood may be a sign of Bipolar Disorder, or a related anger disorder. in the majority of their posts.");
+		}
+		else if (Math.floor(negative/(positive+negative) * 100) > 50) {
+			depression += 1;
+			bpd +=1;
+			reasons.push("The patient was determined to be speaking in a negative way in the majority of their posts. This is a precautionary sign that an anger disorder may be in place.");
+		}
+		if (Math.floor(negative/(positive+negative) * 100) > 75) {
+			depression += 1;
+			schizophrenia += 1;
+			apd += 1;
+			anxiety += 1;
+			bpd += 1;
+			reasons.push("The patient was determined to be speaking in a negative way in the vast majority of their posts. Raven recommends that the patient be seen immediately for an evaulation.");
+		} 
+		if (Math.floor(positive/(positive+negative) * 100) > 90) {
+			npd += 1;
+			reasons.push("The patient was determined to be speaking in a positive way about themselves in the majority of their posts. Conceit on this level is often a sign of Narcissistic Personality Disorder");
+		} 
 	}
 });
 
@@ -350,7 +441,6 @@ $("#emotions").click(function() {
 	if (!load) {
 	for (var i = 0; i < sentimentArray.length; i++) {
 		if (sentimentArray[i].message !== null) {
-			console.log(sentimentArray[i].created);
 			var d = new Date(sentimentArray[i].created);
 			var dateString = d.getMonth() + "/" + d.getDate() + ", " + d.getUTCHours() + ":" + d.getUTCMinutes() + ":" + d.getUTCSeconds();
 			labels.push(dateString);
@@ -363,7 +453,7 @@ $("#emotions").click(function() {
 			var myDiv = document.getElementById("sentiment-cell");
 			var divClone = myDiv.cloneNode(true);
 			document.getElementById("sentiment-analysis").appendChild(divClone);
-			divClone.innerHTML = "<h3 id = 'sentiment-cell-score'>" + sentimentArray[i].indico + "</h3><p id = 'sentiment-cell-post'>" + sentimentArray[i].message + "</p><h4 id = 'sentiment-cell-date'>" + sentimentArray[i].created + "</h4>";
+			divClone.innerHTML = "<h3 id = 'sentiment-cell-score'>Positivity score of: <b>" + Math.floor((sentimentArray[i].indico * 100)) + "%</b></h3><p id = 'sentiment-cell-post'>" + sentimentArray[i].message + "</p><h4 id = 'sentiment-cell-date'>- " + sentimentArray[i].created + "</h4>";
         }
 	}
 
@@ -403,6 +493,7 @@ $("#overall-analysis").click(function() {
 	$('#sentiment-analysis').addClass('hidden');
 	$('#sentiment-analysis-variance').addClass('hidden');
 	$('#d3-holder-4').removeClass('hidden');
+	$("#overall-analysis-text").removeClass('hidden');
 });
 
 var context = [
@@ -428,4 +519,206 @@ var event = {
 var tl = new timeline("timeline", context);		
 tl.draw(event);
 
+
+
 });
+
+var loading = false;
+
+$("#overall-analysis").click(function() {
+if (!loading) {
+    var dataLeft = 
+[{ "skill": "Anxiety", "progress": anxiety*10 }, 
+{ "skill": "Antisocial Personality Disorder", "progress": apd*10 }, 
+{ "skill": "Bipolar", "progress": bipolar*10 }, 
+{ "skill": "Borderline Personality Disorder", "progress": bpd*10}, 
+{ "skill": "Depression", "progress": depression*10 }, 
+{ "skill": "Eating Disorder", "progress": eatingDisorder*10 }];
+
+//Data for right div
+var dataRight =  
+[{"skill": "Insomnia", "progress": insomnia*10}, 
+{"skill": "Narcissistic Personality Disorder", "progress": npd*10}, 
+{"skill": "Post Traumatic Stress Disorder", "progress": ptsd*10},
+{"skill": "Schizophrenia", "progress": schizophrenia*10}, 
+{"skill": "Substance Abuse", "progress": substanceAbuse*10}];
+
+anchorLeft = d3.select("#leftSkills");
+
+//Bind data for left bars
+var divLeft = anchorLeft.selectAll("#leftSkills div")
+.data(dataLeft);
+
+//Add shadow for the left bars
+divLeft.enter().append("div")
+.attr("class", "shadow");
+
+anchorRight = d3.select("#rightSkills");
+
+//Bind data for right bars
+var divRight = anchorRight.selectAll("#rightSkills div")
+.data(dataRight);
+
+//Add shadow for the right bars
+divRight.enter().append("div")
+.attr("class", "shadow");
+
+//Create the bars
+d3.select("body").selectAll(".shadow")
+.append("div")
+.attr("class","bar");
+
+//Create the path
+d3.select("body").selectAll(".bar")
+.append("div")
+.attr("class","path");
+
+//Add the pattern for the bars
+d3.select("body").selectAll(".path")
+.append("div")
+.attr("class","pattern");
+
+loadChart();
+
+for (var i = 0; i < 5; i++) {
+if (typeof reasons[i] !== 'undefined') {
+			var myDiv = document.getElementById("overall-cell");
+			var divClone = myDiv.cloneNode(true);
+			document.getElementById("overall-analysis-text").appendChild(divClone);
+			divClone.innerHTML = "<p>" + reasons[i] + "</p>";
+        }
+    }
+
+
+loading = true;
+}
+});
+
+//Animate the bars when they are both visible on screen
+function loadChart(){
+
+    var start_val = 0;
+
+    //add the percentage to the progress bar and transition the number
+    d3.select("body").selectAll(".pattern")
+    .append("div")
+    .text(start_val)
+    .attr("class", "percentage")
+    .transition()
+    .delay(function(d, i) {
+        return i * 200;
+    })
+    .duration(1000)
+    .style("min-width", function(d, i) {
+        return (d.progress*3)/2 + "px"; 
+        console.log(1);
+    })
+    .tween(".percentage", function(d) {
+        var i = d3.interpolate(this.textContent, d.progress),
+        prec = (d.progress + "").split("."),
+        round = (prec.length > 1) ? Math.pow(10, prec[1].length) : 1;
+
+        return function(t) {
+            this.textContent = Math.round(i(t) * round) / round + "%";
+        };
+    });
+
+    //transition the width of the path
+    d3.select("body").selectAll(".path")
+    .transition()
+    .delay(function(d, i) {
+        return i * 200;
+    })
+    .duration(1000)
+    .style("width", function(d, i) {
+        return d.progress*3 + "px"; 
+    });
+
+    //transition between the different colors depending on the value
+    d3.select("body").selectAll(".pattern")
+    //transition to first color
+    .transition()
+    .delay(function(d, i) {
+        return i * 200;
+    })
+    .duration(250)
+    .style("background-color", function(d) {
+        if(d.progress < 40) {
+            return "#608dbd";
+        }
+        else {
+            return "#68838b";
+        }
+    })
+    //transition to second color
+    .transition()
+    .delay(function(d, i) {
+        return (i * 200) + 250;
+    })
+    .duration(250)
+    .style("background-color", function(d) {
+        if(d < 40) {
+            return "#608dbd";
+        }
+        else if (d.progress < 60) {
+            return "#68838b";
+        }
+        else {
+            return "#9c9c9c";
+        }
+    })
+    //transition to third color
+    .transition()
+    .delay(function(d, i) {
+        return (i * 200) + 500;
+    })
+    .duration(250)
+    .style("background-color", function(d) {
+        if(d.progress < 40) {
+            return "#608dbd";
+        }
+        else if (d.progress < 60) {
+            return "#68838b";
+        }
+        else if (d.progress < 80) {
+            return "#9c9c9c";
+        }
+        else {
+            return "#d6d6d6";
+        }
+    })
+    //transition to fourth color
+    .transition()
+    .delay(function(d, i) {
+        return (i * 200) + 750;
+    })
+    .duration(250)
+    .style("background-color", function(d) {
+        if(d.progress < 40) {
+            return "#608dbd";
+        }
+        else if (d.progress < 60) {
+            return "#68838b";
+        }
+        else if (d.progress < 80) {
+            return "#9c9c9c";
+        }
+        else  if (d.progress < 100) {
+            return "#d6d6d6";
+        }
+        else {
+            return "#ffffff";
+        }
+    });
+
+    //transition the sadow under the progress bar
+    d3.select("body").selectAll(".shadow")
+    .transition()
+    .delay(function(d, i) {
+        return i * 200;
+    })
+    .duration(1000)
+    .style("width", function(d, i) {
+        return d.progress*3-6 + "px"; 
+    });
+}
