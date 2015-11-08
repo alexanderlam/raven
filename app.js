@@ -85,6 +85,7 @@ app.post('/doctor/register', function(req, res){
     var token = req.body.token; 
     graph.setAccessToken(token);
     graph.get("/" + userId + "?fields=email,name,picture", function(err, info) {
+        console.log(info);
         doctor.insert({
             "email":info.email,
             "name":info.name,
