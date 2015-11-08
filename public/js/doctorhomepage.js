@@ -23,12 +23,14 @@ var sentimentArray;
 var topics;
 var labels = [];
 		var data = [];
-var tagsUrl = "https://yraven.herokuapp.com/graph/posts/tags?token=CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79&userId=10204568093938230";
-var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment?token=CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79&userId=10204568093938230";
+var tagsUrl = "https://yraven.herokuapp.com/graph/posts/tags";
+var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment";
     jQuery.ajax({
         type:"GET",
         url:tagsUrl,
-        body:{
+        data:{
+            token: "CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79",
+            userId: "10204568093938230"
         },
         dataType:"json"
     }).done(
@@ -46,7 +48,9 @@ var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment?token=CAA
     jQuery.ajax({
         type:"GET",
         url:sentimentUrl,
-        body:{
+        data:{
+            token: "CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79",
+            userId: "10204568093938230"
         },
         dataType:"json"
     }).done(
