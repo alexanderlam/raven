@@ -18,19 +18,22 @@ function fb_login(type){
             //console.log(response); // dump complete info
             access_token = response.authResponse.accessToken; //get access token
             user_id = response.authResponse.userID; //get FB UID
-            serverLookup(response.authResponse,type,function(data){
+            serverLookup(response.authResponse,type, function(data){
                 if(type == "doctor-registration"){
-                sessionStorage.setItem('doctorId', data);
-                window.location.replace("http://"+document.location.hostname+"/doctorform.html");
-                }else if (type=="doctor-login"){
-                sessionStorage.setItem('doctorId', data);
-                window.location.replace("http://"+document.location.hostname+"/patientlist.html");    
-                }else if (type=="patient-registration"){
-                sessionStorage.setItem('patientId', data);
-                window.location.replace("http://"+document.location.hostname+"/patientdashboard.html");        
-                }else if (type=="patient-login"){
-                sessionStorage.setItem('patientId', data);
-                window.location.replace("http://"+document.location.hostname+"/patientdashboard.html");      
+                    sessionStorage.setItem('doctorId', data);
+                    window.location.replace("http://"+document.location.hostname+"/doctorform.html");
+                }
+                else if (type=="doctor-login"){
+                    sessionStorage.setItem('doctorId', data);
+                    window.location.replace("http://"+document.location.hostname+"/patientlist.html");    
+                }
+                else if (type=="patient-registration"){
+                    sessionStorage.setItem('patientId', data);
+                    window.location.replace("http://"+document.location.hostname+"/patientdashboard.html");        
+                }
+                else if (type=="patient-login"){
+                    sessionStorage.setItem('patientId', data);
+                    window.location.replace("http://"+document.location.hostname+"/patientdashboard.html");      
                 }
             });
 

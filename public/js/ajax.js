@@ -21,8 +21,7 @@ function serverLookup(authResponse,type,successAction) {
         dataType:"json"
     }).done(
         function(data){
-            data = JSON.parse(data)
-            successAction(data.id);
+            successAction(data.userId);
         }
     ).fail(
         function(data){
