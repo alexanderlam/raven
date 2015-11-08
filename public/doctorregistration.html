@@ -128,18 +128,13 @@ function fb_login(){
             access_token = response.authResponse.accessToken; //get access token
             user_id = response.authResponse.userID; //get FB UID
 
-            FB.api('/me', function(response) {
-                user_email = response.email; //get user email
-          // you can store this data into your database             
-            });
-
         } else {
             //user hit cancel button
             console.log('User cancelled login or did not fully authorize.');
 
         }
     }, {
-        scope: 'email,read_mailbox,user_posts,user_about_me'
+        scope: 'email,user_posts,user_about_me'
     });
 }
 
