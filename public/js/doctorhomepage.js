@@ -252,8 +252,10 @@ topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance"
                         		$('#d3-holder-1').addClass('hidden');
                         		$('#d3-holder-5').addClass('hidden');
                         		$('#d3-holder-6').addClass('hidden');
+                                $('#d3-holder-7').addClass('hidden');
                         		$('#sentiment-analysis-variance').addClass('hidden');
                         		$('#sentiment-analysis').addClass('hidden');
+                                $('#overall-analysis-text').addClass('hidden');
                         		$('#warning-sign').removeClass('hidden');
                         		$('#d3-holder-3').removeClass('hidden');
                         	} else if (document.getElementById("choice-1").innerHTML === "Analysis") {
@@ -262,9 +264,11 @@ topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance"
                         		$('#d3-holder-5').addClass('hidden');
                         		$('#d3-holder-1').addClass('hidden');
                         		$('#d3-holder-6').addClass('hidden');
+                                $('#d3-holder-7').addClass('hidden');
                         		$('#sentiment-analysis').addClass('hidden');
                         		$('#warning-sign').addClass('hidden');
                         		$('#sentiment-analysis-variance').addClass('hidden');
+                                $('#overall-analysis-text').removeClass('hidden');
                         		$('#d3-holder-4').removeClass('hidden');
                         	}
                         	else if (document.getElementById("choice-1").innerHTML === "Topics") {
@@ -274,6 +278,7 @@ topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance"
                         		$('#d3-holder-1').addClass('hidden');
                         		$('#d3-holder-6').addClass('hidden');
 								$('#warning-sign').addClass('hidden');
+                                $('#d3-holder-7').addClass('hidden');
                         		$('#sentiment-analysis-variance').addClass('hidden');
                         		$('#d3-holder-4').addClass('hidden');
                         		$('#d3-holder-2').removeClass('hidden');
@@ -292,6 +297,7 @@ $("#choose-type-2").click(function() {
 		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-3').addClass('hidden');
 		$('#d3-holder-6').addClass('hidden');
+        $('#d3-holder-7').addClass('hidden');
 		$('#sentiment-analysis').addClass('hidden');
 		$('#warning-sign').addClass('hidden');
 		$('#sentiment-analysis-variance').addClass('hidden');
@@ -343,9 +349,10 @@ $("#choose-type-2").click(function() {
 		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-5').addClass('hidden');
 		$('#d3-holder-6').addClass('hidden');
+        $('#d3-holder-7').addClass('hidden');
 		$('#sentiment-analysis-variance').addClass('hidden');
 		$('#sentiment-analysis').addClass('hidden');
-		$('#overall-analysis-text').addClass('hidden');
+		$('#overall-analysis-text').removeClass('hidden');
 		$('#warning-sign').removeClass('hidden'); //!!!!
 		$('#d3-holder-1').removeClass('hidden');
 
@@ -355,6 +362,7 @@ $("#choose-type-2").click(function() {
 		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-5').addClass('hidden');
 		$('#d3-holder-1').addClass('hidden');
+        $('#d3-holder-7').addClass('hidden');
 		$('#overall-analysis-text').addClass('hidden');
 		$('#sentiment-analysis').addClass('hidden');
 		$('#warning-sign').addClass('hidden');
@@ -511,6 +519,8 @@ $("#word-usage").click(function() {
 	$('#d3-holder-4').addClass('hidden');
 	$('#d3-holder-5').addClass('hidden');
 	$('#d3-holder-6').addClass('hidden');
+    $('#d3-holder-7').addClass('hidden');
+    $('#overall-analysis-text').addClass('hidden');
 	$('#sentiment-analysis-variance').addClass('hidden');
 	$('#sentiment-analysis').addClass('hidden');
 	$('#warning-sign').removeClass('hidden');
@@ -530,7 +540,9 @@ $("#emotions").click(function() {
 	$('#d3-holder-4').addClass('hidden');
 	$('#d3-holder-5').addClass('hidden');
 	$('#d3-holder-6').addClass('hidden');
+    $('#d3-holder-7').addClass('hidden');
 	$('#warning-sign').addClass('hidden');
+    $('#overall-analysis-text').addClass('hidden');
 	$('#sentiment-analysis-variance').addClass('hidden');
 	$('#sentiment-analysis').removeClass('hidden');
 	$('#d3-holder-2').removeClass('hidden');
@@ -587,6 +599,7 @@ $("#overall-analysis").click(function() {
 	$('#d3-holder-5').addClass('hidden');
 	$('#warning-sign').addClass('hidden');
 	$('#d3-holder-6').addClass('hidden');
+    $('#d3-holder-7').addClass('hidden');
 	$('#sentiment-analysis').addClass('hidden');
 	$('#sentiment-analysis-variance').addClass('hidden');
 	$('#d3-holder-4').removeClass('hidden');
