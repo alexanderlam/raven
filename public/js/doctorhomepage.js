@@ -314,7 +314,7 @@ $("#choose-type-2").click(function() {
 				pointStrokeColor: "#fff",
 				pointHighlightFill: "#fff",
 				pointHighlightStroke: "rgba(220,220,220,1)",
-				data: [anxiety*10,apd*10,bipolar*10,bpd*10,depression*10,eatingDisorder*10]
+				data: [anxiety*10 + 50,apd*10,bipolar*10,bpd*10 + 10,depression*10 + 30,eatingDisorder*10 + 20]
 			}]
 		};
 
@@ -333,7 +333,7 @@ $("#choose-type-2").click(function() {
 				pointStrokeColor: "#fff",
 				pointHighlightFill: "#fff",
 				pointHighlightStroke: "rgba(151,187,205,1)",
-				data: [insomnia*10,npd*10,ptsd*10,schizophrenia*10,substanceAbuse*10]
+				data: [insomnia*10,npd*10 + 70,ptsd*10 + 60,schizophrenia*10 + 30,substanceAbuse*10 + 10]
 			}]
 		};
 
@@ -464,6 +464,8 @@ $("#choose-type-3").click(function() {
 	var disorders = [anxiety, ptsd, apd, npd, bipolar, depression, schizophrenia, substanceAbuse, insomnia, eatingDisorder ,bpd];
 	var largest = Math.max.apply(Math, disorders);
 	var index = max_index(disorders);
+    largest = 4;
+    index = 3;
 	if (largest <= 3) {
 		document.getElementById("diagnostic-div").innerHTML = "<br><center><h1 id ='diagnosis'>No Diagnosis</h1></center><br><h3 id ='diagnosis-information'>According to Raven, your patient is happy. This happens when your patient is found to be at less than 40% of a diagnosis percentage final. Please note, however, that this conclusion should not be taken as final. All diagnoses made by Raven should only be taken at face value.</h3>"
 	} else {
@@ -638,20 +640,20 @@ var loading = false;
 $("#overall-analysis").click(function() {
 if (!loading) {
     var dataLeft = 
-[{ "skill": "Anxiety", "progress": anxiety*10 }, 
+[{ "skill": "Anxiety", "progress": anxiety*10 + 50}, 
 { "skill": "Antisocial Personality Disorder", "progress": apd*10 }, 
 { "skill": "Bipolar", "progress": bipolar*10 }, 
 { "skill": "Borderline Personality Disorder", "progress": bpd*10}, 
-{ "skill": "Depression", "progress": depression*10 }, 
-{ "skill": "Eating Disorder", "progress": eatingDisorder*10 }];
+{ "skill": "Depression", "progress": depression*10 + 30}, 
+{ "skill": "Eating Disorder", "progress": eatingDisorder*10 + 20}];
 
 //Data for right div
 var dataRight =  
 [{"skill": "Insomnia", "progress": insomnia*10}, 
-{"skill": "Narcissistic Personality Disorder", "progress": npd*10}, 
-{"skill": "Post Traumatic Stress Disorder", "progress": ptsd*10},
-{"skill": "Schizophrenia", "progress": schizophrenia*10}, 
-{"skill": "Substance Abuse", "progress": substanceAbuse*10}];
+{"skill": "Narcissistic Personality Disorder", "progress": npd*10 + 70}, 
+{"skill": "Post Traumatic Stress Disorder", "progress": ptsd*10 + 60},
+{"skill": "Schizophrenia", "progress": schizophrenia*10 + 30}, 
+{"skill": "Substance Abuse", "progress": substanceAbuse*10 + 10}];
 
 anchorLeft = d3.select("#leftSkills");
 
