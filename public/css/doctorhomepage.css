@@ -901,3 +901,7 @@ canvas{
     text-align: right;
     font-size: 14px;
 }
+
+#overall-analysis-text {
+    overflow: scroll;
+}

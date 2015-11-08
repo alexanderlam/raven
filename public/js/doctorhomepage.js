@@ -15,66 +15,71 @@
 var reasons = [];
 
 $(document).ready(function() {
-
-
 	var load = 0;
+var json;
+var sentimentJson = "";
+var indicoArray;
+var sentimentArray;
+var topics;
+var labels = [];
+		var data = [];
+var tagsUrl = "https://yraven.herokuapp.com/graph/posts/tags?token=CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79&userId=10204568093938230";
+var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment?token=CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79&userId=10204568093938230";
+    jQuery.ajax({
+        type:"GET",
+        url:tagsUrl,
+        body:{
+        },
+        dataType:"json"
+    }).done(
+        function(data){
+            loadJsonTags(data);
+        }
+    ).fail(
+        function(data){
+            console.log('err');
+            console.log(JSON.stringify(data));
+            console.log(data.status);
+            console.log(data.statusMessage);
+        });
 
+    jQuery.ajax({
+        type:"GET",
+        url:sentimentUrl,
+        body:{
+        },
+        dataType:"json"
+    }).done(
+        function(data){
 
-	var text = JSON.stringify([{  
-		"message":"I think I am becoming an atheist tonight",
-		"created":"2015-11-08T00:55:01+0000",
-		"indico":{  
-			"dieting":0.0023664630419026125,
-			"drugs":0.0032440226355381655,
-			"beer":0.0024720520070090945,
-			"personal":0.006068045526164255,
-			"romance":0.002041935844854507,
-			"relationships":0.0019704646296144304,
-			"atheism":0.2296987254561555,
-			"nostalgia":0.001713157154439114,
-			"lgbt":0.008621945711762337,
-			"wine":0.0031130821473919507
-		}
-	},
-	{  
-		"message":"I need to die",
-		"created":"2015-11-08T00:54:51+0000",
-		"indico":{  
-			"dieting":0.004345373872869754,
-			"drugs":0.02003739824289553,
-			"beer":0.004885592680382496,
-			"personal":0.014601436640301807,
-			"romance":0.0039096284904883635,
-			"relationships":0.0029867096124156015,
-			"atheism":0.021921108826787793,
-			"nostalgia":0.002267567973274216,
-			"lgbt":0.005117771879986786,
-			"wine":0.0027693711538489068
-		}
-	},
-	{  
-		"message":"I love that crack and meth",
-		"created":"2015-11-08T00:54:46+0000",
-		"indico":{  
-			"dieting":0.00853217415747198,
-			"drugs":0.11717197706309135,
-			"beer":0.009314444263107062,
-			"personal":0.007533623978209127,
-			"romance":0.007495016448779212,
-			"relationships":0.004397000213949794,
-			"atheism":0.0059552178297946155,
-			"nostalgia":0.00618587963672549,
-			"lgbt":0.009445884762764077,
-			"wine":0.009415523246203027
-		}
-	}]);
+            loadJsonSentiment(data);
+        }
+    ).fail(
+        function(data){
+            console.log('err');
+            console.log(JSON.stringify(data));
+            console.log(data.status);
+            console.log(data.statusMessage);
+        });
+
+    function loadJsonTags(data) {
+    	
+
+	var text = JSON.stringify(data);
 
 var fontSizes = [100, 85, 70, 50, 40, 32, 24, 18];
-var indicoArray = JSON.parse(text);
-var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance", "relationships", "atheism", "lgbt"];
+indicoArray = JSON.parse(text);
+topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance", "relationships", "atheism", "lgbt"];
 
+					
 
-                        for (var i = 0; i < 5; i++) {
+						for (var k = 0; k < indicoArray.length; k++) {
+							if (!indicoArray.message) {
+								indicoArray.splice(k,1);
+							}
+						}
+
+                        for (var i = 0; i < 3; i++) {
                         	if (typeof indicoArray[i] !== 'undefined') {
                         		var myDiv = document.getElementById("warning-sign-cell");
                         		var divClone = myDiv.cloneNode(true);
@@ -169,7 +174,7 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
                         	var percentMax = (countDict[i][1] / maximum) * 100;
 
                         	if (percentMax > 95) {
-                        		worldCloudList.push([countDict[i][0], fontSizes[0]]);
+                        		worldCloudList.push([countDict[i][0], fontSizes[4]]);
                     
                         	} else if (percentMax > 85) {
                         		worldCloudList.push([countDict[i][0], fontSizes[1]]);
@@ -211,6 +216,22 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
                         WordCloud(document.getElementById('d3-holder-3'), { list: worldCloudList } );
 
 
+    }
+
+    function loadJsonSentiment(data) {
+    	var sentimentText = JSON.stringify(data);
+		console.log(sentimentJson);
+		sentimentArray = JSON.parse(sentimentText);
+		var newsentimentArray = [];
+		for (var k = 0; k < sentimentArray.length; k++) {
+							if (sentimentArray[k].message) {
+								newsentimentArray.push(sentimentArray[k]);
+							}
+						}
+						console.log(newsentimentArray);
+		sentimentArray = newsentimentArray;
+		console.log(sentimentArray);
+    }
 
 
                         $("#choose-type-1").click(function() {
@@ -252,24 +273,6 @@ var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "roma
                         	}
                         });
 
-var sentimentText = JSON.stringify([{  
-		"message":"I think I'm becoming an atheist tonight",
-		"created":"2015-11-08T00:55:01+0000",
-		"indico":0.5165563225746155
-	},
-	{  
-		"message":"I need to die",
-		"created":"2015-11-08T00:54:51+0000",
-		"indico":0.391457736492157
-	},
-	{  
-		"message":"I love that crack and meth",
-		"created":"2015-11-08T00:54:46+0000",
-		"indico":0.9546283483505249
-	}]);
-	var labels = [];
-	var data = [];
-	var sentimentArray = JSON.parse(sentimentText);
 
 $("#choose-type-2").click(function() {
 	$(this).css('background-color', 'rgba(255,255,255,.4)');
@@ -285,8 +288,8 @@ $("#choose-type-2").click(function() {
 		$('#warning-sign').addClass('hidden');
 		$('#sentiment-analysis-variance').addClass('hidden');
 		$('#d3-holder-5').removeClass('hidden');
-		var radarChartData = {
-			labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+		var radarChartDataOne = {
+			labels: ["Anxiety", "APD", "Bipolar", "BPD", "Depression", "Eating Disorder"],
 			datasets: [
 			{
 				label: "My First dataset",
@@ -296,8 +299,17 @@ $("#choose-type-2").click(function() {
 				pointStrokeColor: "#fff",
 				pointHighlightFill: "#fff",
 				pointHighlightStroke: "rgba(220,220,220,1)",
-				data: [65,59,90,81,56,55,40]
-			},
+				data: [anxiety*10,apd*10,bipolar*10,bpd*10,depression*10,eatingDisorder*10]
+			}]
+		};
+
+		var options = {
+			pointLabelFontColor : "#fff"
+		}
+
+		var radarChartDataTwo = {
+			labels: ["Insomnia", "NPD", "PTSD", "Schizophrenia", "Substance Abuse"],
+			datasets: [
 			{
 				label: "My Second dataset",
 				fillColor: "rgba(151,187,205,0.2)",
@@ -306,13 +318,14 @@ $("#choose-type-2").click(function() {
 				pointStrokeColor: "#fff",
 				pointHighlightFill: "#fff",
 				pointHighlightStroke: "rgba(151,187,205,1)",
-				data: [28,48,40,19,96,27,100]
-			}
-			]
+				data: [insomnia*10,npd*10,ptsd*10,schizophrenia*10,substanceAbuse*10]
+			}]
 		};
 
 		var radar_chart = document.getElementById("canvas_radar").getContext("2d");
-		new Chart(radar_chart).Radar(radarChartData);
+		new Chart(radar_chart).Radar(radarChartDataOne, options);
+		var radar_chart = document.getElementById("canvas_radar2").getContext("2d");
+		new Chart(radar_chart).Radar(radarChartDataTwo, options);
 
 	}
 	else if (document.getElementById("choice-2").innerHTML !== "Variance"){
@@ -448,7 +461,7 @@ $("#emotions").click(function() {
 		}
 	}
 
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 3; i++) {
         if (typeof sentimentArray[i] !== 'undefined') {
 			var myDiv = document.getElementById("sentiment-cell");
 			var divClone = myDiv.cloneNode(true);
@@ -580,7 +593,7 @@ d3.select("body").selectAll(".path")
 
 loadChart();
 
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 3; i++) {
 if (typeof reasons[i] !== 'undefined') {
 			var myDiv = document.getElementById("overall-cell");
 			var divClone = myDiv.cloneNode(true);
