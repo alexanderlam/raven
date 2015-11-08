@@ -13,6 +13,8 @@
 	var ptsd = 0;
 
 var reasons = [];
+var tempToken = "CAACEdEose0cBADuShg26hwUaACablQrj4fkZB6DAy3XjkO0FC1LC0TBwfpungE4bhjerDLzM3bz5eaSwsPrWofBcVtN3bNFJx9jgBt8V5sr2FPRT28yQ0y3tZBetwqGNnla2oCj5sxdd0dMACoYUMYRHcrQZBIhWraRcJ1flSnPeCGZBaVF62aHezpyRy6yecaywFUln5ZCtbv0rR2h5F";
+var tempId = "10204568093938230";
 
 $(document).ready(function() {
 	var load = 0;
@@ -29,8 +31,8 @@ var sentimentUrl = "http://yraven.herokuapp.com/graph/posts/sentiment";
         type:"GET",
         url:tagsUrl,
         data:{
-            token: sessionStorage.getItem('token'),
-            userId: sessionStorage.getItem('userId')
+            token: tempToken,
+            userId: tempId
         },
         dataType:"json"
     }).done(
@@ -49,8 +51,8 @@ var sentimentUrl = "http://yraven.herokuapp.com/graph/posts/sentiment";
         type:"GET",
         url:sentimentUrl,
         data:{
-            token: sessionStorage.getItem('token'),
-            userId: sessionStorage.getItem('userId')
+            token: tempToken,
+            userId: tempId
         },
         dataType:"json"
     }).done(
