@@ -40,7 +40,7 @@ function fb_login(type){
 
         }
     }, {
-        scope: 'email,user_posts,user_about_me';
+        scope: 'email,user_posts,user_about_me'
     });
 }
 
