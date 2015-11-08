@@ -29,7 +29,7 @@ graph.setVersion("2.3");
 
 // Routes
 
-app.get('/graph/posts', function(req, res){
+app.get('/graph/posts/tags', function(req, res){
     res.set({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
@@ -40,6 +40,22 @@ app.get('/graph/posts', function(req, res){
     graph.setAccessToken(token);
     graph.get("/" + userId + "/feed", function(err, feed) {
         posts.textTags(feed.data, function(data){
+            res.status(200).send(data);
+        });
+    });
+});
+
+app.get('/graph/posts/sentiment', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    var userId = req.query.userId;
+    var token = req.query.token; 
+    graph.setAccessToken(token);
+    graph.get("/" + userId + "/feed", function(err, feed) {
+        posts.sentiment(feed.data, function(data){
             res.status(200).send(data);
         });
     });

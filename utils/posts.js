@@ -13,25 +13,6 @@ var wordsWeWant = [
 	'lgbt'
 ]
 
-var keywords = function(posts, callback){
-	var list = [];
-	for (var i = 0; i < posts.length; i++){
-		if(posts[i].message){
-			indico.keywords(posts[i].message)
-			.then(function(res) {
-				list.push(res);
-
-				if(i === posts.length){
-					console.log();
-					callback(list);
-				}
-			}).catch(function(err) {
-				console.warn(err);
-			});
-		}
-	}
-}
-
 var filterResponse = function(response, post){
 	var newResponse = {
 		message: post.message,
@@ -51,6 +32,36 @@ var filterResponse = function(response, post){
 	};
 
 	return newResponse;
+}
+
+var sentimentHQ = function(count, text, callback, list){
+	if(count === text.length){
+		callback(list);
+	}
+	else{
+		indico.sentimentHQ(text[count].message)
+		.then(function(res) {
+			list.push({
+				message: text[count].message,
+				created: text[count].created_time,
+				indico: res
+			});
+			sentimentHQ(count+1, text, callback, list);
+		}).catch(function(err) {
+			console.warn(err);
+		});
+	}
+}
+
+var entrySentiment = function(text, callback){
+	var list = [];
+
+	for(var i = 0; i < text.length; i++){
+		if(!text[i].message){
+			text.splice(i, 1);	
+		}
+	}
+	sentimentHQ(0, text, callback, list);
 }
 
 var textTags = function(count, text, callback, list){
@@ -81,5 +92,6 @@ var entryTextTags = function(text, callback){
 }
 
 module.exports = {
-	textTags: entryTextTags
+	textTags: entryTextTags,
+	sentiment: entrySentiment
 }
