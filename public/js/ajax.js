@@ -1,4 +1,4 @@
-var url = 'https://yraven.herokuapp.com';
+var url = 'http://yraven.herokuapp.com';
 
 function serverLookup(authResponse,type,successAction) {
     var endpoint = "";
@@ -21,7 +21,8 @@ function serverLookup(authResponse,type,successAction) {
         dataType:"json"
     }).done(
         function(data){
-            successAction(data);
+            data = JSON.parse(data)
+            successAction(data.id);
         }
     ).fail(
         function(data){

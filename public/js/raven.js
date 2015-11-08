@@ -29,7 +29,7 @@ function submitDoctorForm(){
      doctorDetails['grad'] = document.getElementById("grad-field").value;
      doctorDetails['state'] = document.getElementById("state-field").value;
     //get doctor id or whatever identifier was made
-    doctorDetails['id'] = sessionStorage.getItem('doctorId').id;
+    doctorDetails['id'] = sessionStorage.getItem('doctorId');
     //give values to maidi
     doctorUpdate(doctorDetails, function(data){        
                 window.location.replace(document.location.hostname+"/patientlist.html");      
@@ -37,10 +37,11 @@ function submitDoctorForm(){
     
 }
 
-function populatePatients(docId){
+function populatePatients(){
         var imageKey = "";
         var nameKey = "";
         var idKey = "";
+        var docId = sessionStorage.getItem('doctorId');
         
     //Call server to get JSON response of patient data
     
