@@ -13,7 +13,7 @@
 	var ptsd = 0;
 
 var reasons = [];
-var tempToken = "CAACEdEose0cBADuShg26hwUaACablQrj4fkZB6DAy3XjkO0FC1LC0TBwfpungE4bhjerDLzM3bz5eaSwsPrWofBcVtN3bNFJx9jgBt8V5sr2FPRT28yQ0y3tZBetwqGNnla2oCj5sxdd0dMACoYUMYRHcrQZBIhWraRcJ1flSnPeCGZBaVF62aHezpyRy6yecaywFUln5ZCtbv0rR2h5F";
+var tempToken = "CAACEdEose0cBALpavzJ2iob2MZB8PRHHn201jeFAZBXLvZABQyMGZA0oQk8db1yGoakZAPFCSmQ4E0n8ieZAeTrvzIjO1Ptax6dSpKlpNTYRxOOVfWFmGJBHkWaAsB8ubKExTZBghjRUUFYAEufK1QAlJKZAidhjMcNyD3SfMcXAZBnmWvniMYoAPhfn5hTmZCu1p76HLecCoCOG4jPBbe9QPZA";
 var tempId = "10204568093938230";
 
 $(document).ready(function() {
@@ -304,7 +304,7 @@ $("#choose-type-2").click(function() {
 		$('#d3-holder-5').removeClass('hidden');
 		$('#overall-analysis-text').removeClass('hidden');
 		var radarChartDataOne = {
-			labels: ["Anxiety", "APD", "Bipolar", "BPD", "Depression", "Eating Disorder"],
+			labels: ["Anxiety", "Dimentia", "Bipolar", "BPD", "Depression", "Eating Disorder"],
 			datasets: [
 			{
 				label: "My First dataset",
