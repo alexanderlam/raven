@@ -9,89 +9,161 @@ $(document).ready(function() {
 		$(this).css('background-color', 'rgba(255,255,255,.4)');
 		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0)');
 		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
+		if (document.getElementById("choice-2").innerHTML === "Diagnosis") {
+			console.log("e");
+			$('#d3-holder-1').addClass('hidden');
+			$('#d3-holder-2').addClass('hidden');
+			$('#d3-holder-4').addClass('hidden');
+			$('#d3-holder-3').addClass('hidden');
+			$('#d3-holder-5').removeClass('hidden');
+			var radarChartData = {
+				labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+				datasets: [
+				{
+					label: "My First dataset",
+					fillColor: "rgba(220,220,220,0.2)",
+					strokeColor: "rgba(220,220,220,1)",
+					pointColor: "rgba(220,220,220,1)",
+					pointStrokeColor: "#fff",
+					pointHighlightFill: "#fff",
+					pointHighlightStroke: "rgba(220,220,220,1)",
+					data: [65,59,90,81,56,55,40]
+				},
+				{
+					label: "My Second dataset",
+					fillColor: "rgba(151,187,205,0.2)",
+					strokeColor: "rgba(151,187,205,1)",
+					pointColor: "rgba(151,187,205,1)",
+					pointStrokeColor: "#fff",
+					pointHighlightFill: "#fff",
+					pointHighlightStroke: "rgba(151,187,205,1)",
+					data: [28,48,40,19,96,27,100]
+				}
+				]
+			};
+
+			var radar_chart = document.getElementById("canvas_radar").getContext("2d");
+			new Chart(radar_chart).Radar(radarChartData);
+
+		}
+		else if (document.getElementById("choice-2").innerHTML !== "Negative"){
+			$('#d3-holder-2').addClass('hidden');
+			$('#d3-holder-3').addClass('hidden');
+			$('#d3-holder-4').addClass('hidden');
+			$('#d3-holder-5').addClass('hidden');
+			$('#d3-holder-1').removeClass('hidden');
+		}
 	});
 
-	$("#choose-type-3").click(function() {
-		$(this).css('background-color', 'rgba(255,255,255,.4)');
-		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0)');
-		$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
-	});
+$("#choose-type-3").click(function() {
+	$(this).css('background-color', 'rgba(255,255,255,.4)');
+	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0)');
+	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
+});
 
-	$("#word-usage").click(function() {
-		document.getElementById("choice-1").innerHTML = "Posts";
-		document.getElementById("choice-2").innerHTML = "Likes";
-		document.getElementById("choice-3").innerHTML = "";
-		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
-		$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
-		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
-		$('#d3-holder-1').addClass('hidden');
-		$('#d3-holder-2').addClass('hidden');
-		$('#d3-holder-4').addClass('hidden');
-		$('#d3-holder-3').removeClass('hidden');
-	});
+$("#word-usage").click(function() {
+	document.getElementById("choice-1").innerHTML = "Posts";
+	document.getElementById("choice-2").innerHTML = "Likes";
+	document.getElementById("choice-3").innerHTML = "";
+	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
+	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
+	$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
+	$('#d3-holder-1').addClass('hidden');
+	$('#d3-holder-2').addClass('hidden');
+	$('#d3-holder-4').addClass('hidden');
+	$('#d3-holder-5').addClass('hidden');
+	$('#d3-holder-3').removeClass('hidden');
+});
 
-	$("#emotions").click(function() {
-		document.getElementById("choice-1").innerHTML = "Positive";
-		document.getElementById("choice-2").innerHTML = "Negative";
-		document.getElementById("choice-3").innerHTML = "";
-		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
-		$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
-		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
-		$('#d3-holder-1').addClass('hidden');
-		$('#d3-holder-3').addClass('hidden');
-		$('#d3-holder-4').addClass('hidden');
-		$('#d3-holder-2').removeClass('hidden');
+$("#emotions").click(function() {
+	document.getElementById("choice-1").innerHTML = "Positive";
+	document.getElementById("choice-2").innerHTML = "Negative";
+	document.getElementById("choice-3").innerHTML = "";
+	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
+	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
+	$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
+	$('#d3-holder-1').addClass('hidden');
+	$('#d3-holder-3').addClass('hidden');
+	$('#d3-holder-4').addClass('hidden');
+	$('#d3-holder-5').addClass('hidden');
+	$('#d3-holder-2').removeClass('hidden');
 
-	});
+	var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
-	$("#relationships").click(function() {
-		document.getElementById("choice-1").innerHTML = "History";
-		document.getElementById("choice-2").innerHTML = "";
-		document.getElementById("choice-3").innerHTML = "";
-		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
-		$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
-		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
-		$('#d3-holder-2').addClass('hidden');
-		$('#d3-holder-3').addClass('hidden');
-		$('#d3-holder-4').addClass('hidden');
-		$('#d3-holder-1').removeClass('hidden');
-	});
+	var barChartData = {
+		labels : ["January","February","March","April","May","June","July"],
+		datasets : [
+		{
+			fillColor : "rgba(220,220,220,0.5)",
+			strokeColor : "rgba(220,220,220,0.8)",
+			highlightFill: "rgba(220,220,220,0.75)",
+			highlightStroke: "rgba(220,220,220,1)",
+			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+		},
+		{
+			fillColor : "rgba(151,187,205,0.5)",
+			strokeColor : "rgba(151,187,205,0.8)",
+			highlightFill : "rgba(151,187,205,0.75)",
+			highlightStroke : "rgba(151,187,205,1)",
+			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+		}]
+	}
 
-	$("#overall-analysis").click(function() {
-		document.getElementById("choice-1").innerHTML = "Analysis";
-		document.getElementById("choice-2").innerHTML = "Diagnosis";
-		document.getElementById("choice-3").innerHTML = "Explanation";
-		$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
-		$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
-		$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
-		$('#d3-holder-2').addClass('hidden');
-		$('#d3-holder-3').addClass('hidden');
-		$('#d3-holder-1').addClass('hidden');
-		$('#d3-holder-4').removeClass('hidden');
-	});
+	var canvas_bar = document.getElementById("canvas_bar").getContext("2d");
+	new Chart(canvas_bar).Bar(barChartData);
 
-	var context = [
-	{ 'name': 'Andrew Carnegie', 'start': 1835, 'end': 1919 },
-	{ 'name': 'Sarah Hewitt', 'start': 1858, 'end': 1930 },
-	{ 'name': 'Eleanor Hewitt', 'start': 1864, 'end': 1924 },
-	{ 'name': 'Cooper Union', 'start': 1897, 'end': 1967  },
-	{ 'name': 'Carnegie mansion', 'start': 1903, 'end': 0 },
-	{ 'name': 'Smithsonian', 'start': 1976, 'end': 0 },
-	{ 'name': 'CHNDM', 'start': 1994, 'end': 0 },
-	{ 'name': 'Renovations', 'start': 2011, 'end': 2014 },
-	{ 'name': 'Re-opening', 'start': 2014, 'end': 0 },
-	];
-	var event = {
-		'start': 1955,
-		'end': 1975,
-		'echo': 1971,
-		'echo_prefix': 'acquired',
-		'start_prefix': 'start',
-		'end_prefix': '',
-	};
+});
 
-	var tl = new timeline("timeline", context);		
-	tl.draw(event);
+$("#relationships").click(function() {
+	document.getElementById("choice-1").innerHTML = "History";
+	document.getElementById("choice-2").innerHTML = "";
+	document.getElementById("choice-3").innerHTML = "";
+	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
+	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
+	$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
+	$('#d3-holder-2').addClass('hidden');
+	$('#d3-holder-3').addClass('hidden');
+	$('#d3-holder-4').addClass('hidden');
+	$('#d3-holder-5').addClass('hidden');
+	$('#d3-holder-1').removeClass('hidden');
+});
+
+$("#overall-analysis").click(function() {
+	document.getElementById("choice-1").innerHTML = "Analysis";
+	document.getElementById("choice-2").innerHTML = "Diagnosis";
+	document.getElementById("choice-3").innerHTML = "Explanation";
+	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
+	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
+	$("#choose-type-3").css('background-color', 'rgba(255,255,255,0)');
+	$('#d3-holder-2').addClass('hidden');
+	$('#d3-holder-3').addClass('hidden');
+	$('#d3-holder-1').addClass('hidden');
+	$('#d3-holder-5').addClass('hidden');
+	$('#d3-holder-4').removeClass('hidden');
+});
+
+var context = [
+{ 'name': 'Andrew Carnegie', 'start': 1835, 'end': 1919 },
+{ 'name': 'Sarah Hewitt', 'start': 1858, 'end': 1930 },
+{ 'name': 'Eleanor Hewitt', 'start': 1864, 'end': 1924 },
+{ 'name': 'Cooper Union', 'start': 1897, 'end': 1967  },
+{ 'name': 'Carnegie mansion', 'start': 1903, 'end': 0 },
+{ 'name': 'Smithsonian', 'start': 1976, 'end': 0 },
+{ 'name': 'CHNDM', 'start': 1994, 'end': 0 },
+{ 'name': 'Renovations', 'start': 2011, 'end': 2014 },
+{ 'name': 'Re-opening', 'start': 2014, 'end': 0 },
+];
+var event = {
+	'start': 1955,
+	'end': 1975,
+	'echo': 1971,
+	'echo_prefix': 'acquired',
+	'start_prefix': 'start',
+	'end_prefix': '',
+};
+
+var tl = new timeline("timeline", context);		
+tl.draw(event);
 	// $(window).resize(function(){
 	// 	tl.redraw();
 	// });
