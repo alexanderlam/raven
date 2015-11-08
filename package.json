@@ -9,7 +9,8 @@
     "fb": "^0.7.3",
     "fbgraph": "^1.1.0",
     "indico.io": "^0.4.6",
-    "mongodb": "^2.0.48"
+    "mongodb": "^2.0.48",
+    "python-shell": "^0.2.0"
   },
   "devDependencies": {},
   "scripts": {
