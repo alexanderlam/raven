@@ -5,7 +5,6 @@ var url = process.env.MONGOLAB_URI + '/patients';
 var insert = function(patient, cb){
     var operation = function(db, callback) {
         db.collection('patients').insert(patient,
-
             function(err, result) {
                 console.log("Inserted a document into the patients collection.\n");
                 callback(err, result);

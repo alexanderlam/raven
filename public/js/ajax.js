@@ -14,7 +14,7 @@ function serverLookup(authResponse,type,successAction) {
     jQuery.ajax({
         type:"POST",
         url:url+endpoint,
-        body:JSON.stringify({
+        data:JSON.stringify({
             "token": authResponse.accessToken,
             "userId": authResponse.userID
         }),
