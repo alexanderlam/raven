@@ -100,6 +100,10 @@
                     <div class = "col-sm-7 colored cell-margin" id = "d3-holder-3">
                         <!-- <div id="timeline"></div> -->
                     </div>
+                    <div class = 'col-sm-7 colored cell-margin hidden' id = 'd3-holder-6'> 
+                        <br>
+                        <canvas id="canvas_pie" height="450" width="600"></canvas>
+                    </div>
                     <div class = "col-sm-7 colored cell-margin hidden" id = "d3-holder-4">
                         <div id="skills">
                             <div  id='leftSkills'> </div>
@@ -114,50 +118,67 @@
 
 
                     <div class="col-sm-4 colored padding" id = "warning-sign">
-                    Sample Post Analyses
-                      <div id = "warning-sign-cell">
-                        <h3 id = "warning-sign-topic"></h3>
-                        <p id = "warning-sign-post"></p>
-                        <h4 id = "warning-sign-date"></h4>
+                        Post Analyses
+                        <div id = "warning-sign-cell" class = "">
+                            <h3 id = "warning-sign-topic"></h3>
+                            <p id = "warning-sign-post"></p>
+                            <h4 id = "warning-sign-date"></h4>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-4 colored padding hidden" id = "sentiment-analysis">
+                    Post Analyses
+                     <div id = "sentiment-cell">
+                            <h3 id = "sentiment-cell-score"></h3>
+                            <p id = "sentiment-cell-post"></p>
+                            <h4 id = "sentiment-cell-date"></h4>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 colored padding hidden" id = "sentiment-analysis-variance">
+                    Post Analyses
+                     <div id = "sentiment-variance-cell">
+                            <h2 id = "sentiment-variance-cell-score">hi</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class ="col-md-12 no-gutters text-center bottom-bar">
-            <nav class = "cl-effect-14">
-                <div class ="col-md-4"><a href="#" data-hover="Word Usage" id="word-usage"><span>Word Usage</span></a></div>
-                <div class ="col-md-4"><a href="#" data-hover="Emotions" id = "emotions"><span>Emotions</span></a></div>
-                <div class ="col-md-4"><a href="#" data-hover="Overall Analysis" id = "overall-analysis"><span>Overall Analysis</span></a></div>
-            </nav>
-        </div>
-    </header>
+            <div class ="col-md-12 no-gutters text-center bottom-bar">
+                <nav class = "cl-effect-14">
+                    <div class ="col-md-4"><a href="#" data-hover="Word Usage" id="word-usage"><span>Word Usage</span></a></div>
+                    <div class ="col-md-4"><a href="#" data-hover="Emotions" id = "emotions"><span>Emotions</span></a></div>
+                    <div class ="col-md-4"><a href="#" data-hover="Overall Analysis" id = "overall-analysis"><span>Overall Analysis</span></a></div>
+                </nav>
+            </div>
+        </header>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="d3.v3.min.js"></script>
-    <script src="js/chart.js"></script>
-    <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
-    <script src="colorbrewer.js"></script>
-    <script type="text/javascript" src="js/d3.timeline.event-horizon.min.js"></script>
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-    <script src="js/bilevelpartition.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="d3.v3.min.js"></script>
+        <script src="js/chart.js"></script>
+        <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script>
+        <script src="colorbrewer.js"></script>
+        <script type="text/javascript" src="js/d3.timeline.event-horizon.min.js"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        <script src="js/bilevelpartition.js"></script>
 
-    <!-- jQuery -->
+        <!-- jQuery -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="js/progressbar.js"></script>
-    <script src="js/wordcloud2.js"></script>
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+        <!-- Plugin JavaScript -->
+        <script src="js/jquery.easing.min.js"></script>
+        <script type="text/javascript" src="js/progressbar.js"></script>
+        <script src="js/wordcloud2.js"></script>
+        <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
-    <script src="js/doctorhomepage.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="js/grayscale.js"></script>
+        <script src="js/doctorhomepage.js"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>
