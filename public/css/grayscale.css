@@ -511,7 +511,7 @@ input[type="text"]{
 
 .patientCol{
     padding:0px;
-    display:none;
+    display:block;
 }
 
 .dark{
