@@ -234,6 +234,8 @@ topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance"
     }
 
 
+
+
                         $("#choose-type-1").click(function() {
                         	$(this).css('background-color', 'rgba(255,255,255,.4)');
                         	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
@@ -288,6 +290,7 @@ $("#choose-type-2").click(function() {
 		$('#warning-sign').addClass('hidden');
 		$('#sentiment-analysis-variance').addClass('hidden');
 		$('#d3-holder-5').removeClass('hidden');
+		$('#overall-analysis-text').removeClass('hidden');
 		var radarChartDataOne = {
 			labels: ["Anxiety", "APD", "Bipolar", "BPD", "Depression", "Eating Disorder"],
 			datasets: [
@@ -336,14 +339,17 @@ $("#choose-type-2").click(function() {
 		$('#d3-holder-6').addClass('hidden');
 		$('#sentiment-analysis-variance').addClass('hidden');
 		$('#sentiment-analysis').addClass('hidden');
+		$('#overall-analysis-text').addClass('hidden');
 		$('#warning-sign').removeClass('hidden'); //!!!!
 		$('#d3-holder-1').removeClass('hidden');
+
 	} else {
 		$('#d3-holder-2').addClass('hidden');
 		$('#d3-holder-3').addClass('hidden');
 		$('#d3-holder-4').addClass('hidden');
 		$('#d3-holder-5').addClass('hidden');
 		$('#d3-holder-1').addClass('hidden');
+		$('#overall-analysis-text').addClass('hidden');
 		$('#sentiment-analysis').addClass('hidden');
 		$('#warning-sign').addClass('hidden');
 		$('#sentiment-analysis-variance').removeClass('hidden');
@@ -409,10 +415,82 @@ $("#choose-type-2").click(function() {
 	}
 });
 
+
+/*<h5>Overall, according to Raven's social media analysis your patient can be diagnosed as:</h5>
+                        <center><h1 id ="diagnosis"></h1></center>
+                        <br>
+                        <h3 id ="diagnosis-information"></h3>*/
+function max_index(elements) {
+    var i = 1;
+    var mi = 0;
+    while (i < elements.length) {
+        if (!(elements[i] < elements[mi]))
+            mi = i;
+        i += 1;
+    }
+    return mi;
+}
+
 $("#choose-type-3").click(function() {
 	$(this).css('background-color', 'rgba(255,255,255,.4)');
 	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0)');
 	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
+
+	$('#d3-holder-1').addClass('hidden');
+	$('#d3-holder-2').addClass('hidden');
+	$('#d3-holder-4').addClass('hidden');
+	$('#d3-holder-5').addClass('hidden');
+	$('#d3-holder-6').addClass('hidden');
+	$('#sentiment-analysis-variance').addClass('hidden');
+	$('#sentiment-analysis').addClass('hidden');
+	$('#warning-sign').addClass('hidden');
+	$('#d3-holder-3').addClass('hidden');
+	$('#d3-holder-7').removeClass('hidden');
+	$('#overall-analysis-text').removeClass('hidden');
+	var disorders = [anxiety, ptsd, apd, npd, bipolar, depression, schizophrenia, substanceAbuse, insomnia, eatingDisorder ,bpd];
+	var largest = Math.max.apply(Math, disorders);
+	var index = max_index(disorders);
+	if (largest <= 3) {
+		document.getElementById("diagnostic-div").innerHTML = "<br><center><h1 id ='diagnosis'>No Diagnosis</h1></center><br><h3 id ='diagnosis-information'>According to Raven, your patient is happy. This happens when your patient is found to be at less than 40% of a diagnosis percentage final. Please note, however, that this conclusion should not be taken as final. All diagnoses made by Raven should only be taken at face value.</h3>"
+	} else {
+		var disease;
+		switch (index) {
+			case 0:
+			disease = "Anxiety";
+			break;
+			case 1:
+			disease = "Post Traumatic Stress Disorder";
+			break;
+			case 2:
+			disease = "Antisocial Personality Disorder";
+			break;
+			case 3:
+			disease = "Narcissistic Personality Disorder";
+			break;
+			case 4:
+			disease = "Bipolar";
+			break;
+			case 5:
+			disease = "Depression";
+			break;
+			case 6:
+			disease = "Schizophrenia";
+			break;
+			case 7:
+			disease = "Substance Abuse";
+			break;
+			case 8:
+			disease = "Insomnia";
+			break;
+			case 9:
+			disease = "Eating Disorder";
+			break;
+			default:
+			disease = "Borderline Personality Disorder";
+			break;
+		}
+		document.getElementById("diagnostic-div").innerHTML = "<br><center><h1 id ='diagnosis'>" + disease + "</h1></center><br><h6 id ='diagnosis-information'>According to Raven, your patient could possibly have this disorder. This happens when your patient is found to be at more than 40% of a diagnosis percentage final for this disorder. Please note, however, that this conclusion should not be taken as final. All diagnoses made by Raven should only be taken at face value.</h3>"
+	}
 });
 
 $("#word-usage").click(function() {
