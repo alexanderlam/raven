@@ -37,7 +37,7 @@ function doctorUpdate (doctorDetails,successAction){
     jQuery.ajax({
         type:"POST",
         url:url+"/doctor/update",
-        body:{
+        data:{
             "institution": doctorDetails["institution"],
             "degree": doctorDetails["degree"],
             "year": doctorDetails["grad"],
