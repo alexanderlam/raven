@@ -1,0 +1,132 @@
+{
+  "children": [
+    {
+      "name": "Test",
+      "children": [
+        {
+          "name": "TestSub_1",
+		  "colour": "rgba(95, 122, 80)",
+          "children": [
+            {
+              "name": "TestSubSub_1",
+              "size": 8,
+              "colour": "rgba(95, 122, 80,0.95)"
+            },
+            {
+              "name": "TestSubSub_2",
+              "size": 5,
+              "colour": "rgba(95, 122, 80,0.85)"
+            },
+            {
+              "name": "TestSubSub_3",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.75)"
+            },
+            {
+              "name": "TestSubSub_4",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.65)"
+            },
+            {
+              "name": "TestSubSub_5",
+              "size": 75,
+              "colour": "rgba(95, 122, 80,0.55)"
+            },
+            {
+              "name": "TestSubSub_6",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.45)"
+            },
+            {
+              "name": "TestSubSub_7",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.35)"
+            },
+            {
+              "name": "TestSubSub_8",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.25)"
+            },
+            {
+              "name": "TestSubSub_9",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.15)"
+            },
+            {
+              "name": "TestSubSub_10",
+              "size": 15,
+              "colour": "rgba(95, 122, 80,0.05)"
+            }
+          ]
+        },
+        {
+          "name": "TestSub_2",
+		  "colour": "rgb(21, 39, 80)",
+          "children": [
+            {
+              "name": "TestSubSub_1",
+              "size": 10,
+              "colour": "rgba(95, 122, 80,0.75)"
+            },
+            {
+              "name": "TestSubSub_2",
+              "size": 5,
+              "colour": "rgba(95, 122, 80,0.65)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TestSub_3",
+      "colour": "rgb(21, 39, 80)",
+      "children": [
+        {
+          "name": "TestSubSub_1",
+		  "colour": "rgba(95, 122, 80,0.95)",
+          "children": [
+            {
+              "name": "TestSubSubSub_1",
+              "size": 10,
+              "colour": "rgba(21, 39, 80,0.95)"
+            },
+			 {
+              "name": "TestSubSubSub_2",
+              "size": 10,
+              "colour": "rgba(21, 39, 80,0.85)"
+            },
+			 {
+              "name": "TestSubSubSub_3",
+              "size": 10,
+              "colour": "rgba(21, 39, 80,0.75)"
+            }
+          ]
+        },
+        {
+          "name": "TestSubSub_2",
+		  "colour": "rgb(21, 39, 80)",
+          "children": [
+            {
+              "name": "TestSubSubSub_1",
+              "size": 5,
+              "colour": "rgba(21, 39, 80,0.65)"
+            },{
+              "name": "TestSubSubSub_2",
+              "size": 5,
+              "colour": "rgba(21, 39, 80,0.55)"
+            },{
+              "name": "TestSubSubSub_3",
+              "size": 5,
+              "colour": "rgba(21, 39, 80,0.45)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TestSubSub_3",
+      "size": 10,
+      "colour": "rgb(25, 55, 80)"
+    }
+  ]
+}

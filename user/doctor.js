@@ -62,15 +62,17 @@ var update = function(info, cb){
                 "state": info.state
             },
             new:true 
+        }, function(err, val){
+            callback(val);
         });
 
-        callback(value);
+        
     };
 
     MongoClient.connect(url, function(err, db) {
         console.log("Connected correctly to server.");
         modify(db, function(foundItem){
-            cb(foundItem);
+            cb(null, foundItem);
             db.close();
         });
     });
