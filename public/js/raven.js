@@ -49,7 +49,7 @@ function populatePatients(){
     
     
     //Turn JSON response into array
-    var patientArray = patientObj.keys(obj).map(function(k) { return obj[k] });
+    var patientArray;
     var count = 0;
     //foreach patient, get the picture, name and profile ID
     for (var value in patientArray){
@@ -93,7 +93,7 @@ function populatePatientDashboard(patientId){
 }
 
 function patientRegistration(){
-    var doctorRef = query_string.ref;
+    var doctorRef = QueryString.ref;
         document.getElementById("docReferral").value = doctorRef;
         sessionStorage.setItem('doctorRef', doctorRef);
     
