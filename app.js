@@ -135,7 +135,12 @@ app.post('/doctor/login', function(req, res){
             res.status(400).send(err);
         }
         else{
-            res.status(200).send(result);
+            if(!result){
+                res.status(200).send({})
+            }
+            else{
+                res.status(200).send(result);
+            }
         }
     });
 });
@@ -182,7 +187,12 @@ app.post('/patient/login', function(req, res){
             res.status(400).send(err);
         }
         else{
-            res.status(200).send(result);
+            if(!result){
+                res.status(200).send({})
+            }
+            else{
+                res.status(200).send(result);
+            }
         }
     });
 });
@@ -199,7 +209,13 @@ app.get('/patient/list', function(req, res){
             res.status(400).send(err);
         }
         else{
-            res.status(200).send(result);
+            console.log(result);
+            if(!result){
+                res.status(200).send({})
+            }
+            else{
+                res.status(200).send(result);
+            }
         }
     });
 });
