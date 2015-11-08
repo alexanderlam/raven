@@ -261,8 +261,18 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
+    <script src="js/ajax.js"></script>
     <script src="js/raven.js"></script>
     
+ <script>
+    $( document ).ready(function(){
+                
+        sessionStorage.setItem('doctorId', "10156436170155019");
+
+        populatePatients();
+        
+    });
+    </script>
    
 
 </body>
