@@ -72,7 +72,8 @@ app.post('/doctor/register', function(req, res){
         doctor.insert({
             "email":info.email,
             "name":info.name,
-            "picture":info.picture.data.url
+            "picture":info.picture.data.url,
+            "token":token
         }, function(err, result){
             if(err){
                 res.status(400).send(err);
