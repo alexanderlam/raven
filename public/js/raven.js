@@ -22,22 +22,23 @@ var QueryString = function () {
     return query_string;
 }();
 
-function submitDoctorForm(docId){
-    var institution = document.getElementById("institution-field").value;
-     var degree = document.getElementById("degree-field").value;
-     var grad = document.getElementById("grad-field").value;
-     var state = document.getElementById("state-field").value;
-    
+function submitDoctorForm(){
+    var doctorDetails = [];
+    doctorDetails['institution'] = document.getElementById("institution-field").value;
+     doctorDetails['degree'] = document.getElementById("degree-field").value;
+     doctorDetails['grad'] = document.getElementById("grad-field").value;
+     doctorDetails['state'] = document.getElementById("state-field").value;
     //get doctor id or whatever identifier was made
-    
+    doctorDetails['id'] = sessionStorage.getItem('doctorId').id;
     //give values to maidi
-    
-    window.location = "path";
+    doctorUpdate(doctorDetails, function(data){        
+                window.location.replace(document.location.hostname+"/patientlist.html");      
+    });
     
 }
 
 function populatePatients(docId){
-            var imageKey = "";
+        var imageKey = "";
         var nameKey = "";
         var idKey = "";
         
@@ -71,7 +72,7 @@ function populatePatients(docId){
         count++;
         
         
-    };
+    }
     
     
 }

@@ -18,7 +18,7 @@ function fb_login(type){
             //console.log(response); // dump complete info
             access_token = response.authResponse.accessToken; //get access token
             user_id = response.authResponse.userID; //get FB UID
-            serverLookup(response.authResponse,function(data){
+            serverLookup(response.authResponse,type,function(data){
                 if(type == "doctor-registration"){
                 sessionStorage.setItem('doctorId', data);
                 window.location.replace(document.location.hostname+"/doctorform.html");
@@ -40,7 +40,7 @@ function fb_login(type){
 
         }
     }, {
-        scope: 'email,user_posts,user_about_me'
+        scope: 'email,user_posts,user_about_me';
     });
 }
 
