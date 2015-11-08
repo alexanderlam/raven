@@ -23,8 +23,8 @@ var sentimentArray;
 var topics;
 var labels = [];
 		var data = [];
-var tagsUrl = "https://yraven.herokuapp.com/graph/posts/tags";
-var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment";
+var tagsUrl = "http://yraven.herokuapp.com/graph/posts/tags";
+var sentimentUrl = "http://yraven.herokuapp.com/graph/posts/sentiment";
     jQuery.ajax({
         type:"GET",
         url:tagsUrl,

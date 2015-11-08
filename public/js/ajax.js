@@ -24,8 +24,8 @@ function serverLookup(authResponse,type,successAction) {
         dataType:"json"
     }).done(
         function(data){
-             sessionStorage.setItem('userId', data.userId);
-             sessionStorage.setItem('token', data.accessToken);
+             sessionStorage.setItem('userId', authResponse.userID);
+             sessionStorage.setItem('token', authResponse.accessToken);
 
             successAction(data.userId);
         }
