@@ -162,10 +162,14 @@
     <!-- Modal content-->
     <div class="modal-content dark" style="padding:20px; text-align:center;">
         <div class="row">
-            <div class="col-md-12" style="padding-top:20px;">
-                <h1>Sign in to your account</h1>
-                <a href="#"><button class="btn sign-up-button" onclick="fb_login();">Sign in Now</button></a>
+            <div class="col-md-6" style="padding-top:20px;">
+                <h1>Doctor?</h1>
+                <a href="doctorregistration.html"><button class="btn sign-up-button" onclick="fb_login('doctor-login');">Login Now</button></a>
             </div>
+            <div class="col-md-6" style="padding-top:20px;">
+                <h1>Patient?</h1>
+                <a href="mailto:?to=&body=Please%20sign%20up%20for%20Raven%20at%20ravenapp.io.,&subject=Diagnostic%20Tool%20Request" target="_blank"><button class="btn sign-up-button" onclick="fb_login('patient-login');">Login Now</button></a>
+                </div>
             </div>
             <div class="row" style="padding-top:50px;">
         <p >Not registered? <a href="#" data-toggle="modal" data-target="#registerModal" onmousedown="$('#loginModal').modal('hide');">Register here.</a></p>
