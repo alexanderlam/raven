@@ -21,16 +21,16 @@ function fb_login(type){
             serverLookup(response.authResponse,type,function(data){
                 if(type == "doctor-registration"){
                 sessionStorage.setItem('doctorId', data);
-                window.location.replace(document.location.hostname+"/doctorform.html");
+                window.location.replace("http://"+document.location.hostname+"/doctorform.html");
                 }else if (type=="doctor-login"){
                 sessionStorage.setItem('doctorId', data);
-                window.location.replace(document.location.hostname+"/patientlist.html");    
+                window.location.replace("http://"+document.location.hostname+"/patientlist.html");    
                 }else if (type=="patient-registration"){
                 sessionStorage.setItem('patientId', data);
-                window.location.replace(document.location.hostname+"/patientdashboard.html");        
+                window.location.replace("http://"+document.location.hostname+"/patientdashboard.html");        
                 }else if (type=="patient-login"){
                 sessionStorage.setItem('patientId', data);
-                window.location.replace(document.location.hostname+"/patientdashboard.html");      
+                window.location.replace("http://"+document.location.hostname+"/patientdashboard.html");      
                 }
             });
 
