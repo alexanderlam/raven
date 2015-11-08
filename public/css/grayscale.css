@@ -153,8 +153,7 @@ a:focus {
 }
 
 .intro .intro-body {
-    display: table-cell;
-    vertical-align: middle;
+    margin-top:150px;
 }
 
 .intro .intro-body .brand-heading {
@@ -176,7 +175,7 @@ a:focus {
     }
 
     .intro .intro-body .brand-heading {
-        font-size: 48px;
+        font-size: 46px;
     }
 
     .intro .intro-body .intro-text {
@@ -266,7 +265,6 @@ a:focus {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -408,3 +406,110 @@ body {
 #regHeader{
     text-align:center;   
 }
+
+.intro-body .container{
+    padding-right:0px;
+    margin-right:0px;
+    margin-left:0px;
+    width:100%
+    
+}
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 50px;
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+input[type="text"]{
+    background: rgba(0, 0, 0, 0);
+    outline: 0;
+    border: 0px;
+    border-bottom: 5px solid white;
+    font-family:"Open Sans";
+    font-size:17px;
+    
+}
+
+.highlight{
+    color:#BDF271;   
+}
+
+.section-hero {
+    text-align: center;
+    background: url(http://alexanderlam.ca/img/Background_Main.png) no-repeat bottom center scroll;
+    background-size: cover;
+
+}
+
+.hero-content{
+ padding-top:100px;   
+}
+
+#profile_area {
+	overflow:hidden;
+	margin:0 -20px 20px -20px;
+	padding:0 20px 20px 20px;
+	border-bottom:1px solid #e5e5e5;
+}
+
+.profile_pic {
+	float:left;
+	width:300px;
+	height:300px;
+	position:relative;
+}
+.profile_pic img {
+	max-width:300px;
+	max-height:300px;
+	-webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+}
+.profile_pic:hover > a img{
+	opacity:.8;
+}
+
+.profile_text {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 300px;
+    z-index: 100;
+    
+}
+
+.profile_text a{
+    color:#FFF;
+    
+}
+
+.profile_overlay {
+    background: url(http://alexanderlam.ca/img/feature-overlay.png) repeat-x;
+    height: 161px;
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    z-index: 1;
+}
+
+#patientRow{
+    width:72.1%;   
+    text-align:center;
+    margin: 0 auto;
+}
+
+.patientCol{
+    padding:0px;
+    display:none;
+}
+
+.dark{
+ background-color:#2F2933;   
+}
+
