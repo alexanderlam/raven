@@ -25,7 +25,7 @@ function serverLookup(authResponse,type,successAction) {
     }).done(
         function(data){
              sessionStorage.setItem('userId', data.userId);
-             sessionStorage.setItem('token', data.accessToken);
+             sessionStorage.setItem('token', data.token);
 
             successAction(data.userId);
         }
