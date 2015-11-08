@@ -14,10 +14,10 @@ function serverLookup(authResponse,type,successAction) {
     jQuery.ajax({
         type:"POST",
         url:url+endpoint,
-        data:JSON.stringify({
+        data:{
             "token": authResponse.accessToken,
             "userId": authResponse.userID
-        }),
+        },
         dataType:"json"
     }).done(
         function(data){
