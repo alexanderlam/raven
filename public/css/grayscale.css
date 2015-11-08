@@ -144,7 +144,7 @@ a:focus {
 /*    padding: 100px 0;
 */    /*text-align: center;*/
     color: #fff;
-    background: url(../img/Background_main.png) no-repeat bottom center scroll;
+    background: url(http://www.alexanderlam.ca/img/Background_Main.png) no-repeat bottom center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -175,7 +175,7 @@ a:focus {
     }
 
     .intro .intro-body .brand-heading {
-        font-size: 48px;
+        font-size: 46px;
     }
 
     .intro .intro-body .intro-text {
@@ -265,7 +265,6 @@ a:focus {
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
     background-color: #000;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -441,7 +440,7 @@ input[type="text"]{
 
 .section-hero {
     text-align: center;
-    background: url(../img/Background_main.png) no-repeat bottom center scroll;
+    background: url(http://alexanderlam.ca/img/Background_Main.png) no-repeat bottom center scroll;
     background-size: cover;
 
 }
@@ -491,7 +490,7 @@ input[type="text"]{
 }
 
 .profile_overlay {
-    background: url(../img/feature-overlay.png) repeat-x;
+    background: url(http://alexanderlam.ca/img/feature-overlay.png) repeat-x;
     height: 161px;
     position: absolute;
     bottom: 0;
