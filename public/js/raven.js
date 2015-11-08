@@ -32,21 +32,24 @@ function submitDoctorForm(){
     doctorDetails['id'] = sessionStorage.getItem('doctorId');
     //give values to maidi
     doctorUpdate(doctorDetails, function(data){        
-                window.location.replace(document.location.hostname+"/patientlist.html");      
+                window.location.replace("http://"+document.location.hostname+"/patientlist.html");      
     });
     
 }
 
 function populatePatients(){
-        var imageKey = "";
-        var nameKey = "";
-        var idKey = "";
+        var imageKey = "picture";
+        var nameKey = "name";
+        var idKey = "userId";
         var docId = sessionStorage.getItem('doctorId');
         
     //Call server to get JSON response of patient data
+    getPatients(docId,function(data){
+      var patientObj = data;
+    
     
     //Turn JSON response into array
-    var patientArray = Object.keys(obj).map(function(k) { return obj[k] });
+    var patientArray;
     var count = 0;
     //foreach patient, get the picture, name and profile ID
     for (var value in patientArray){
@@ -70,10 +73,11 @@ function populatePatients(){
         profileName.href = refLink;
         profileLink.href = refLink;
         
-        count++;
-        
+        count++; 
         
     }
+        
+    });
     
     
 }
@@ -85,5 +89,12 @@ function populatePatientDashboard(patientId){
      var gender = document.getElementById("pGender").innerHTML;
      var doctor = document.getElementById("pDoctor").innerHTML;
 
+    
+}
+
+function patientRegistration(){
+    var doctorRef = QueryString.ref;
+        document.getElementById("docReferral").value = doctorRef;
+        sessionStorage.setItem('doctorRef', doctorRef);
     
 }

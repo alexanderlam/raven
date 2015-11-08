@@ -245,7 +245,7 @@
     </header>
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
+            <p>Copyright &copy; Raven 2015</p>
         </div>
     </footer>
 
@@ -261,8 +261,18 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
+    <script src="js/ajax.js"></script>
     <script src="js/raven.js"></script>
     
+ <script>
+    $( document ).ready(function(){
+                
+        sessionStorage.setItem('doctorId', "10156436170155019");
+
+        populatePatients();
+        
+    });
+    </script>
    
 
 </body>

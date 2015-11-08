@@ -44,7 +44,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
+                <a class="navbar-brand page-scroll" href="http://yraven.herokuapp.com/">
                     Raven
                 </a>
             </div>
@@ -57,7 +57,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="http://yraven.herokuapp.com/#about">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#">Log In</a>
@@ -76,12 +76,12 @@
     <div class="row" id = "regHeader">
         <div class=".col-md-12">
     <h1>Welcome to Raven</h1>
-            <h3><span class="highlight" id="highlight-win" data-toggle="tooltip" title="">Dr. Lin</span> has invited you to create a profile</h3>
+            <h3><span class="highlight" id="highlight-win" title="">Your Doctor</span> has invited you to create a profile</h3>
             <!--<hr style="width:5%; margin: 0 auto; margin-top:50px;">-->
             <span style="width:5%; margin: 0 auto; margin-top:50px;"><h1>...</h1></span>
     <div class="row" style="margin-top:50px;">
         <label style="text-align:center; margin-bottom:0px;"><h3 style="margin-bottom:15px;">Referral Code</h3></label> <br/>
-    <input type="text"/>
+    <input type="text" id="docReferral"/>
         </div>
     <div class="row" style="margin-top:50px; margin-bottom:50px;">
     <button class="btn sign-up-button" onclick="fb_login('patient-registration');">Register with Facebook</button>
@@ -94,7 +94,7 @@
     
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
+            <p>Copyright &copy; Raven 2015</p>
         </div>
     </footer>
 
@@ -112,8 +112,14 @@
     <script src="js/grayscale.js"></script>
         <script src="js/ajax.js"></script>
     <script src="js/fb.js"></script>
-    
-   
+    <script src="js/raven.js"></script>    
+    <script>
+    $( document ).ready(function(){
+        
+        patientRegistration();
+        
+    });
+    </script>
 
 </body>
 
