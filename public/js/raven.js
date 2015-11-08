@@ -1,4 +1,4 @@
-var path = "";
+var path = "http://"+document.location.hostname;
 var QueryString = function () {
   // This function is anonymous, is executed immediately and 
   // the return value is assigned to QueryString!
@@ -58,7 +58,7 @@ function populatePatients(){
         var profileLink = entireElement.getElementsByClassName("patientCol")[count].getElementById("profile_link");
         entireElement.style.display = "block";
         //Create link
-        var refLink = path+"?ref="value[idKey];
+        var refLink = path+"?ref="+docId;
         var imageSrc = value[imageKey];
         var name = value[nameKey];
         var imageRef = "Profile picture for "+name;
