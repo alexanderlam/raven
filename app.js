@@ -161,7 +161,7 @@ app.post('/patient/register', function(req, res){
             "name":info.name,
             "picture":info.picture.data.url,
             "userId":userId,
-            "age":info.age_range.max,
+            "age":info.age_range.max ? info.age_range.max : info.age_range.min,
             "gender":info.gender,
             "doctorId":req.body.doctorId
         }, function(err, result){
