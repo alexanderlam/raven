@@ -141,21 +141,30 @@ app.post('/doctor/login', function(req, res){
     });
 });
 
-app.post('/patient', function(req, res){
+app.post('/patient/register', function(req, res){
     res.set({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
 
-    patient.insert({
-        "name":req.body.name,
-        "token":req.body.token
-    }, function(err){
-        if(err){
-            res.status(400).send(err);
-        }
-        else{
-            res.status(200).send('ok');
-        }
+    var userId = req.body.userId;
+    var token = req.body.token; 
+    graph.setAccessToken(token);
+    graph.get("/" + userId + "?fields=email,name,picture,age_range,gender", function(err, info) {
+        patient.insert({
+            "email":info.email,
+            "name":info.name,
+            "picture":info.picture.data.url,
+            "userId":userId,
+            "age":info.age_range.max,
+            "gender":info.gender
+        }, function(err, result){
+            if(err){
+                res.status(400).send(err);
+            }
+            else{
+                res.status(200).send(result.ops[0]);
+            }
+        });
     });
 });
