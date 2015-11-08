@@ -35,11 +35,12 @@ app.get('/graph', function(req, res){
         "Access-Control-Allow-Origin": "*"
     });
 
-    var userId = req.query.userId;
-    var token = req.query.token; 
+    var userId = "10204218636851115";
+    var token = "CAACEdEose0cBAGeSXM9aZBPoUFXoBsuWa9H6uJmgFrhqoOFTVDlq2CuZBn688FEvA9mePtTmwDuwAPBdlflDdYJfeXUJ8lm3OepqoSeb0xpZAxfKgvKgSAEcTeecXfUQM42LlXWC2ZBUFLgZCLMr8PTFyfOK3eTOrA6GQMn05piClNyex7oduzUJE69XD7P38iLfov6xYwkcZCgUdjpK8hp1PJ94uDjfsZD"; 
     graph.setAccessToken(token);
     graph.get("/" + userId + "/inbox", function(err, response) {
         res.status(200).send(response);
+        console.log(indico.sentiment(response.data[0]));
     });
 });
 
