@@ -80,7 +80,7 @@ app.post('/doctor/register', function(req, res){
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
-
+    console.log(req.body)
     var userId = req.body.userId;
     var token = req.body.token; 
     graph.setAccessToken(token);
