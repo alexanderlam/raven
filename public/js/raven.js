@@ -73,10 +73,11 @@ function populatePatients(){
         profileName.href = refLink;
         profileLink.href = refLink;
         
-        count++;
-       }); 
+        count++; 
         
     }
+        
+    });
     
     
 }
