@@ -42,7 +42,7 @@ function doctorUpdate (doctorDetails,successAction){
             "degree": doctorDetails["degree"],
             "year": doctorDetails["grad"],
             "state": doctorDetails["state"],
-            "id": doctorDetails["id"]
+            "userId": doctorDetails["id"]
         },
         dataType:"json"
     }).done(
