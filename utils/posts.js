@@ -32,18 +32,22 @@ var keywords = function(posts, callback){
 	}
 }
 
-var filterResponse = function(response){
+var filterResponse = function(response, post){
 	var newResponse = {
-		dieting: response.dieting,
-		drugs: response.drugs,
-		beer: response.beer,
-		personal: response.personal,
-		romance: response.romance,
-		relationships: response.relationships,
-		atheism: response.atheism,
-		nostalgia: response.nostalgia,
-		lgbt: response.lgbt,
-		wine: response.wine
+		message: post.message,
+		created: post.created_time,
+		indico: {
+			dieting: response.dieting,
+			drugs: response.drugs,
+			beer: response.beer,
+			personal: response.personal,
+			romance: response.romance,
+			relationships: response.relationships,
+			atheism: response.atheism,
+			nostalgia: response.nostalgia,
+			lgbt: response.lgbt,
+			wine: response.wine
+		}
 	};
 
 	return newResponse;
@@ -56,7 +60,7 @@ var textTags = function(count, text, callback, list){
 	else{
 		indico.textTags(text[count].message)
 		.then(function(res) {
-			var temp = filterResponse(res);
+			var temp = filterResponse(res, text[count]);
 			list.push(temp);
 			textTags(count+1, text, callback, list);
 		}).catch(function(err) {
