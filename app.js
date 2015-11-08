@@ -3,7 +3,7 @@ var app = express();
 var graph = require('fbgraph');
 var doctor = require('./user/doctor');
 var patient = require('./user/patient');
-var indico = require('./utils/indico');
+var posts = require('./utils/posts');
 
 var bodyParser = require('body-parser')
 app.set('port', (process.env.PORT || 5000));
@@ -29,7 +29,23 @@ graph.setVersion("2.3");
 
 // Routes
 
-app.get('/graph', function(req, res){
+app.get('/graph/posts', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    var userId = req.query.userId;
+    var token = req.query.token; 
+    graph.setAccessToken(token);
+    graph.get("/" + userId + "/feed", function(err, feed) {
+        posts.textTags(feed.data, function(data){
+            res.status(200).send(data);
+        });
+    });
+});
+
+app.get('/graph/inbox', function(req, res){
     res.set({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
@@ -57,7 +73,7 @@ app.post('/doctor/register', function(req, res){
             "email":info.email,
             "name":info.name,
             "picture":info.picture.data.url
-        }, function(err,result){
+        }, function(err, result){
             if(err){
                 res.status(400).send(err);
             }
@@ -80,7 +96,7 @@ app.post('/doctor/update', function(req, res){
         "degree":req.body.degree,
         "year":req.body.year,
         "state":req.body.state
-    }, function(err,result){
+    }, function(err, result){
         console.log(result);
         if(err){
             res.status(400).send(err);
