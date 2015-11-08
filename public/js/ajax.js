@@ -19,7 +19,7 @@ function serverLookup(authResponse,type,successAction) {
         data:{
             "token": authResponse.accessToken,
             "userId": authResponse.userID,
-            "doctorId": sessionStorage.getItem('doctorId')
+            "doctorId": sessionStorage.getItem('doctorRef')
         },
         dataType:"json"
     }).done(
