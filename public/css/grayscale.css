@@ -164,6 +164,10 @@ a:focus {
     font-size: 14px;
 }
 
+#home {
+    background: url( http://alexanderlam.ca/img/index_background.png ) no-repeat bottom center scroll;  
+}
+
 .tablet-picture {
     text-align: left;
     margin-left: -300px !important;

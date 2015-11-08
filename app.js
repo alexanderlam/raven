@@ -140,6 +140,7 @@ app.post('/doctor/login', function(req, res){
     });
 });
 
+
 app.post('/patient/register', function(req, res){
     res.set({
         "Content-Type": "application/json",
