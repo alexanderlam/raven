@@ -89,7 +89,7 @@ app.post('/doctor/register', function(req, res){
             "email":info.email,
             "name":info.name,
             "picture":info.picture.data.url,
-            "token":token
+            "userId":userId
         }, function(err, result){
             if(err){
                 res.status(400).send(err);

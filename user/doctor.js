@@ -78,7 +78,30 @@ var update = function(info, cb){
     });
 };
 
+var find = function(userId, cb){
+    var operation = function(db, callback) {
+        var foundItem = null;
+        var cursor = db.collection('doctors').findOne( { "userId": userId } );
+        cursor.each(function(err, doc) {
+            if (doc != null) {
+                foundItem = doc;
+            } else {
+                callback(foundItem);
+            }
+        });
+    };
+
+    MongoClient.connect(url, function(err, db) {
+        console.log("Connected correctly to server.");
+        operation(db, function(results){
+            cb(results);
+            db.close();
+        })
+    });
+};
+
 module.exports = {
     insert: insert,
-    update: update
+    update: update,
+    find: find
 };
