@@ -58,3 +58,28 @@ function doctorUpdate (doctorDetails,successAction){
         });
     
 }
+
+function getPatients (docId, successAction){
+    jQuery.ajax({
+        type:"GET",
+        url:url+"/patient/update",
+        data:{
+            "institution": doctorDetails["institution"],
+            "degree": doctorDetails["degree"],
+            "year": doctorDetails["grad"],
+            "state": doctorDetails["state"],
+            "userId": doctorDetails["id"]
+        },
+        dataType:"json"
+    }).done(
+        function(data){
+            successAction(data);
+        }
+    ).fail(
+        function(data){
+            console.log('err');
+            console.log(JSON.stringify(data));
+            console.log(data.status);
+            console.log(data.statusMessage);
+        });
+}
