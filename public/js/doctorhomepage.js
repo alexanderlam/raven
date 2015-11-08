@@ -29,8 +29,8 @@ var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment";
         type:"GET",
         url:tagsUrl,
         data:{
-            token: "CAACEdEose0cBAFTAAEREOf5W2Fk7oZC5CDj9kgIkFisThz6kcn4hujgpMK1NjCxDeuIcfv8JKJgq3IgTeH10LPZCF0DpQAMA67SzKLjWZCoCKcBuzdmThCLqh15RMUZAHvb0C9Qe5qZCfoI0aCVCK7bivs9uUzzlgpn6axn1xyvU0qc5I4haL9vrIQoeGghXyFe5NJZA5X42Kottnh3x1ZC",
-            userId: "10204568093938230"
+            token: sessionStorage.getItem('token'),
+            userId: sessionStorage.getItem('userId')
         },
         dataType:"json"
     }).done(
@@ -49,8 +49,8 @@ var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment";
         type:"GET",
         url:sentimentUrl,
         data:{
-            token: "CAACEdEose0cBAFTAAEREOf5W2Fk7oZC5CDj9kgIkFisThz6kcn4hujgpMK1NjCxDeuIcfv8JKJgq3IgTeH10LPZCF0DpQAMA67SzKLjWZCoCKcBuzdmThCLqh15RMUZAHvb0C9Qe5qZCfoI0aCVCK7bivs9uUzzlgpn6axn1xyvU0qc5I4haL9vrIQoeGghXyFe5NJZA5X42Kottnh3x1ZC",
-            userId: "10204568093938230"
+            token: sessionStorage.getItem('token'),
+            userId: sessionStorage.getItem('userId')
         },
         dataType:"json"
     }).done(
