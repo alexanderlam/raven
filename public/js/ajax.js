@@ -11,7 +11,7 @@ function serverLookup(authResponse,type,successAction) {
         endpoint = "/patient/login";
     }
     
-   /* if (type=="patient-registration"){
+    if (type=="patient-registration"){
         endpoint = "/patient/register";  
         jQuery.ajax({
         type:"POST",
@@ -33,7 +33,7 @@ function serverLookup(authResponse,type,successAction) {
             console.log(data.status);
             console.log(data.statusMessage);
         });
-    }else{ */
+    }else{ 
     
     jQuery.ajax({
         type:"POST",
@@ -54,7 +54,7 @@ function serverLookup(authResponse,type,successAction) {
             console.log(data.status);
             console.log(data.statusMessage);
         });
-    //}
+    }
 
 }
 
@@ -113,7 +113,7 @@ function getPatients (docId, successAction){
         type:"GET",
         url:url+"/patient/list",
         data:{
-            "doctorId": docId;
+            "doctorId": docId
         },
         dataType:"json"
     }).done(
