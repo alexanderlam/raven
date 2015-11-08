@@ -26,7 +26,7 @@ function submitDoctorForm(){
     var doctorDetails = [];
     doctorDetails['institution'] = document.getElementById("institution-field").value;
      doctorDetails['degree'] = document.getElementById("degree-field").value;
-     doctorDetails['grad'] = document.getElementById("grad-field").value;
+     doctorDetails['year'] = document.getElementById("grad-field").value;
      doctorDetails['state'] = document.getElementById("state-field").value;
     //get doctor id or whatever identifier was made
     doctorDetails['id'] = sessionStorage.getItem('doctorId');
