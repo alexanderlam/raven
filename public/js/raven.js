@@ -1,4 +1,4 @@
-var path = "";
+var path = "http://"+document.location.hostname;
 var QueryString = function () {
   // This function is anonymous, is executed immediately and 
   // the return value is assigned to QueryString!
@@ -22,24 +22,26 @@ var QueryString = function () {
     return query_string;
 }();
 
-function submitDoctorForm(docId){
-    var institution = document.getElementById("institution-field").value;
-     var degree = document.getElementById("degree-field").value;
-     var grad = document.getElementById("grad-field").value;
-     var state = document.getElementById("state-field").value;
-    
+function submitDoctorForm(){
+    var doctorDetails = [];
+    doctorDetails['institution'] = document.getElementById("institution-field").value;
+     doctorDetails['degree'] = document.getElementById("degree-field").value;
+     doctorDetails['year'] = document.getElementById("grad-field").value;
+     doctorDetails['state'] = document.getElementById("state-field").value;
     //get doctor id or whatever identifier was made
-    
+    doctorDetails['id'] = sessionStorage.getItem('doctorId');
     //give values to maidi
-    
-    window.location = "path";
+    doctorUpdate(doctorDetails, function(data){        
+                window.location.replace(document.location.hostname+"/patientlist.html");      
+    });
     
 }
 
-function populatePatients(docId){
-            var imageKey = "";
+function populatePatients(){
+        var imageKey = "";
         var nameKey = "";
         var idKey = "";
+        var docId = sessionStorage.getItem('doctorId');
         
     //Call server to get JSON response of patient data
     
@@ -56,7 +58,7 @@ function populatePatients(docId){
         var profileLink = entireElement.getElementsByClassName("patientCol")[count].getElementById("profile_link");
         entireElement.style.display = "block";
         //Create link
-        var refLink = path+"?ref="value[idKey];
+        var refLink = path+"?ref="+docId;
         var imageSrc = value[imageKey];
         var name = value[nameKey];
         var imageRef = "Profile picture for "+name;
@@ -71,7 +73,7 @@ function populatePatients(docId){
         count++;
         
         
-    };
+    }
     
     
 }

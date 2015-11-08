@@ -80,16 +80,17 @@ app.post('/doctor/register', function(req, res){
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
-
+    console.log(req);
     var userId = req.body.userId;
     var token = req.body.token; 
     graph.setAccessToken(token);
     graph.get("/" + userId + "?fields=email,name,picture", function(err, info) {
+        console.log(info);
         doctor.insert({
             "email":info.email,
             "name":info.name,
             "picture":info.picture.data.url,
-            "token":token
+            "userId":userId
         }, function(err, result){
             if(err){
                 res.status(400).send(err);
@@ -108,7 +109,7 @@ app.post('/doctor/update', function(req, res){
     });
 
     doctor.update({
-        "id":req.body.id,
+        "userId":req.body.userId,
         "institution":req.body.institution,
         "degree":req.body.degree,
         "year":req.body.year,
@@ -119,26 +120,52 @@ app.post('/doctor/update', function(req, res){
             res.status(400).send(err);
         }
         else{
-            res.status(200).send(result);
+            res.status(200).send(req.body.userId);
         }
     });
 });
 
-app.post('/patient', function(req, res){
+app.post('/doctor/login', function(req, res){
     res.set({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
 
-    patient.insert({
-        "name":req.body.name,
-        "token":req.body.token
-    }, function(err){
+    doctor.find(req.body.userId, 
+    function(err, result){
         if(err){
             res.status(400).send(err);
         }
         else{
-            res.status(200).send('ok');
+            res.status(200).send(result);
         }
+    });
+});
+
+app.post('/patient/register', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    var userId = req.body.userId;
+    var token = req.body.token; 
+    graph.setAccessToken(token);
+    graph.get("/" + userId + "?fields=email,name,picture,age_range,gender", function(err, info) {
+        patient.insert({
+            "email":info.email,
+            "name":info.name,
+            "picture":info.picture.data.url,
+            "userId":userId,
+            "age":info.age_range.max,
+            "gender":info.gender
+        }, function(err, result){
+            if(err){
+                res.status(400).send(err);
+            }
+            else{
+                res.status(200).send(result.ops[0]);
+            }
+        });
     });
 });
