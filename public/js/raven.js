@@ -51,7 +51,7 @@ function populatePatients(){
     //Turn JSON response into array
     var patientArray;
     var count = 0;
-    var JSON.parse(JSON.stringify(data));
+    var newData = JSON.parse(JSON.stringify(data));
     //foreach patient, get the picture, name and profile ID
     for (var value in patientArray){
         console.log("Iterated");
