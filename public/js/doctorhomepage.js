@@ -29,7 +29,7 @@ var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment";
         type:"GET",
         url:tagsUrl,
         data:{
-            token: "CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79",
+            token: "CAACEdEose0cBAFTAAEREOf5W2Fk7oZC5CDj9kgIkFisThz6kcn4hujgpMK1NjCxDeuIcfv8JKJgq3IgTeH10LPZCF0DpQAMA67SzKLjWZCoCKcBuzdmThCLqh15RMUZAHvb0C9Qe5qZCfoI0aCVCK7bivs9uUzzlgpn6axn1xyvU0qc5I4haL9vrIQoeGghXyFe5NJZA5X42Kottnh3x1ZC",
             userId: "10204568093938230"
         },
         dataType:"json"
@@ -49,7 +49,7 @@ var sentimentUrl = "https://yraven.herokuapp.com/graph/posts/sentiment";
         type:"GET",
         url:sentimentUrl,
         data:{
-            token: "CAACEdEose0cBAIhqzpYYH3tY21hkMxIZAQQ0vXZB3knIuXIfeqdAyNZB1MlPMzV2a0HMSNvPTzd0yDmdeEjMr0aqfbZAweDiNqtrktDVmng2pgWcLiy4CVT74dzcGqgm3rpoZBAEZBQNuZAanZAirH2DD3cZAF0A1HlIYbV4eYShiBWFlH8mN0ZCn9Lzy953QhXMswSHXeDRDpCN3gTdAedl79",
+            token: "CAACEdEose0cBAFTAAEREOf5W2Fk7oZC5CDj9kgIkFisThz6kcn4hujgpMK1NjCxDeuIcfv8JKJgq3IgTeH10LPZCF0DpQAMA67SzKLjWZCoCKcBuzdmThCLqh15RMUZAHvb0C9Qe5qZCfoI0aCVCK7bivs9uUzzlgpn6axn1xyvU0qc5I4haL9vrIQoeGghXyFe5NJZA5X42Kottnh3x1ZC",
             userId: "10204568093938230"
         },
         dataType:"json"
@@ -499,7 +499,7 @@ $("#choose-type-3").click(function() {
 
 $("#word-usage").click(function() {
 	document.getElementById("choice-1").innerHTML = "Posts";
-	document.getElementById("choice-2").innerHTML = "Likes";
+	document.getElementById("choice-2").innerHTML = "";
 	document.getElementById("choice-3").innerHTML = "";
 	$("#choose-type-1").css('background-color', 'rgba(255,255,255,0.4)');
 	$("#choose-type-2").css('background-color', 'rgba(255,255,255,0)');
