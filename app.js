@@ -156,7 +156,8 @@ app.post('/patient/register', function(req, res){
             "picture":info.picture.data.url,
             "userId":userId,
             "age":info.age_range.max,
-            "gender":info.gender
+            "gender":info.gender,
+            "doctorId":req.body.doctorId
         }, function(err, result){
             if(err){
                 res.status(400).send(err);
@@ -165,5 +166,39 @@ app.post('/patient/register', function(req, res){
                 res.status(200).send(result.ops[0]);
             }
         });
+    });
+});
+
+app.post('/patient/login', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    patient.find(req.body.userId, 
+    function(err, result){
+        if(err){
+            res.status(400).send(err);
+        }
+        else{
+            res.status(200).send(result);
+        }
+    });
+});
+
+app.post('/patient/list', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    patient.findMatch(req.body.doctorId, 
+    function(err, result){
+        if(err){
+            res.status(400).send(err);
+        }
+        else{
+            res.status(200).send(result);
+        }
     });
 });

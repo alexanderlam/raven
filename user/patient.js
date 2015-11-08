@@ -21,6 +21,52 @@ var insert = function(patient, cb){
     });
 };
 
+var find = function(userId, cb){
+    var operation = function(db, callback) {
+        var foundItem = null;
+        var cursor = db.collection('patients').find( { "userId": userId } );
+        cursor.each(function(err, doc) {
+            if (doc != null) {
+                foundItem = doc;
+            } else {
+                callback(err, foundItem);
+            }
+        });
+    };
+
+    MongoClient.connect(url, function(err, db) {
+        console.log("Connected correctly to server.");
+        operation(db, function(err, foundItem){
+            cb(err, foundItem);
+            db.close();
+        })
+    });
+};
+
+var findMatch = function(doctorId, cb){
+    var operation = function(db, callback) {
+        var foundItem = null;
+        var cursor = db.collection('patients').find( { "doctorId": doctorId } );
+        cursor.each(function(err, doc) {
+            if (doc != null) {
+                foundItem = doc;
+            } else {
+                callback(err, foundItem);
+            }
+        });
+    };
+
+    MongoClient.connect(url, function(err, db) {
+        console.log("Connected correctly to server.");
+        operation(db, function(err, foundItem){
+            cb(err, foundItem);
+            db.close();
+        })
+    });
+};
+
 module.exports = {
-    insert: insert
+    insert: insert,
+    find: find,
+    findMatch: findMatch
 };
