@@ -108,13 +108,30 @@ app.post('/doctor/update', function(req, res){
     });
 
     doctor.update({
-        "id":req.body.id,
+        "userId":req.body.userId,
         "institution":req.body.institution,
         "degree":req.body.degree,
         "year":req.body.year,
         "state":req.body.state
     }, function(err, result){
         console.log(result);
+        if(err){
+            res.status(400).send(err);
+        }
+        else{
+            res.status(200).send(req.body.userId);
+        }
+    });
+});
+
+app.post('/doctor/login', function(req, res){
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+    });
+
+    doctor.find(req.body.userId, 
+    function(err, result){
         if(err){
             res.status(400).send(err);
         }

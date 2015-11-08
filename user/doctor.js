@@ -24,54 +24,24 @@ var insert = function(doctor, cb){
 };
 
 var update = function(info, cb){
-    var operation = function(db, foundItem, callback) {
+    var operation = function(db, callback) {
         db.collection('doctors').updateOne(
-            { 
-                "institution": info.institution,
-                "degree": info.degree,
-                "year": info.year,
-                "state": info.state
-            },
+            { "userId": info.userId },
             {
-                $currentDate: { "lastModified": true }
+                $set:{ 
+                    "institution": info.institution,
+                    "degree": info.degree,
+                    "year": info.year,
+                    "state": info.state
+                }
             }, function(err, results) {
-                console.log(results);
                 callback(err, results);
             });
     };
 
-    var find = function(db, callback) {
-        var foundItem = null;
-        var cursor = db.collection('doctors').find( { "_id": ObjectID(info.id) } );
-        cursor.each(function(err, doc) {
-            if (doc != null) {
-                foundItem = doc;
-            } else {
-                callback(foundItem);
-            }
-        });
-    };
-
-    var modify = function(db, callback){
-        var value = db.collection('doctors').findAndModify({
-            query: { "_id": ObjectID(info.id) },
-            update: { 
-                "institution": info.institution,
-                "degree": info.degree,
-                "year": info.year,
-                "state": info.state
-            },
-            new:true 
-        }, function(err, val){
-            callback(val);
-        });
-
-        
-    };
-
     MongoClient.connect(url, function(err, db) {
         console.log("Connected correctly to server.");
-        modify(db, function(foundItem){
+        operation(db, function(foundItem){
             cb(null, foundItem);
             db.close();
         });
@@ -81,20 +51,20 @@ var update = function(info, cb){
 var find = function(userId, cb){
     var operation = function(db, callback) {
         var foundItem = null;
-        var cursor = db.collection('doctors').findOne( { "userId": userId } );
+        var cursor = db.collection('doctors').find( { "userId": userId } );
         cursor.each(function(err, doc) {
             if (doc != null) {
                 foundItem = doc;
             } else {
-                callback(foundItem);
+                callback(err, foundItem);
             }
         });
     };
 
     MongoClient.connect(url, function(err, db) {
         console.log("Connected correctly to server.");
-        operation(db, function(results){
-            cb(results);
+        operation(db, function(err, foundItem){
+            cb(err, foundItem);
             db.close();
         })
     });
