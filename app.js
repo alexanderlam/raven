@@ -186,13 +186,13 @@ app.post('/patient/login', function(req, res){
     });
 });
 
-app.post('/patient/list', function(req, res){
+app.get('/patient/list', function(req, res){
     res.set({
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
     });
 
-    patient.findMatch(req.body.doctorId, 
+    patient.findMatch(req.query.doctorId, 
     function(err, result){
         if(err){
             res.status(400).send(err);
