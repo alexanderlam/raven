@@ -1,25 +1,5 @@
 $(document).ready(function() {
 
-//var d = new Date(dateString);
-/*var barChartData = {
-		labels : ["January","February","March","April","May","June","July"],
-		datasets : [
-		{
-			fillColor : "rgba(220,220,220,0.5)",
-			strokeColor : "rgba(220,220,220,0.8)",
-			highlightFill: "rgba(220,220,220,0.75)",
-			highlightStroke: "rgba(220,220,220,1)",
-			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-		},
-		{
-			fillColor : "rgba(151,187,205,0.5)",
-			strokeColor : "rgba(151,187,205,0.8)",
-			highlightFill : "rgba(151,187,205,0.75)",
-			highlightStroke : "rgba(151,187,205,1)",
-			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-		}]
-	}*/
-
 
 	var load = 0;
 
@@ -81,9 +61,6 @@ var fontSizes = [100, 85, 70, 50, 40, 32, 24, 18];
 var indicoArray = JSON.parse(text);
 var topics = ["dieting", "drugs", "wine", "beer", "nostalgia", "personal", "romance", "relationships", "atheism", "lgbt"];
 
-/*<h3 id = "warning-sign-topic"></h3>
-                        <p id = "warning-sign-post"></p>
-                        <h4 id = "warning-sign-date"></h4>*/
 
                         for (var i = 0; i < 5; i++) {
                         	if (typeof indicoArray[i] !== 'undefined') {
@@ -450,7 +427,5 @@ var event = {
 
 var tl = new timeline("timeline", context);		
 tl.draw(event);
-	// $(window).resize(function(){
-	// 	tl.redraw();
-	// });
+
 });
