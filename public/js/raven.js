@@ -29,10 +29,10 @@ function submitDoctorForm(){
      doctorDetails['year'] = document.getElementById("grad-field").value;
      doctorDetails['state'] = document.getElementById("state-field").value;
     //get doctor id or whatever identifier was made
-    doctorDetails['id'] = sessionStorage.getItem('doctorId');
+    doctorDetails['id'] = sessionStorage.getItem('userId');
     //give values to maidi
     doctorUpdate(doctorDetails, function(data){        
-                window.location.replace("http://"+document.location.hostname+"/patientlist.html");      
+                window.location.replace("http://"+document.location.hostname+"/doctorhomepage.html");      
     });
     
 }

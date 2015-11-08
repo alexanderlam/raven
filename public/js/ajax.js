@@ -24,6 +24,9 @@ function serverLookup(authResponse,type,successAction) {
         dataType:"json"
     }).done(
         function(data){
+             sessionStorage.setItem('userId', data.userId);
+             sessionStorage.setItem('token', data.accessToken);
+
             successAction(data.userId);
         }
     ).fail(
@@ -45,6 +48,8 @@ function serverLookup(authResponse,type,successAction) {
         dataType:"json"
     }).done(
         function(data){
+             sessionStorage.setItem('userId', data.userId);
+             sessionStorage.setItem('token', data.accessToken);
             successAction(data.userId);
         }
     ).fail(

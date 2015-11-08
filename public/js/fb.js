@@ -25,7 +25,8 @@ function fb_login(type){
                 }
                 else if (type=="doctor-login"){
                     sessionStorage.setItem('doctorId', data);
-                    window.location.replace("http://"+document.location.hostname+"/patientlist.html");    
+                    
+                    window.location.replace("http://"+document.location.hostname+"/doctorhomepage.html");    
                 }
                 else if (type=="patient-registration"){
                     sessionStorage.setItem('patientId', data);
